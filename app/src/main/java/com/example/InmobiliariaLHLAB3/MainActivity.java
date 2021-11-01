@@ -92,6 +92,8 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        mavm.setHeaderPropietario();
+
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                                     R.id.nav_perfil,
