@@ -52,8 +52,8 @@ public class PagosAdapter extends ArrayAdapter<Pago>
 
         Pago pago = pagos.get(position);
 
-        //TextInputEditText etNroPago =  item.findViewById(R.id.etdNroPago);
-        //etNroPago.setText((""+ pago.getNum_pago()));
+        TextInputEditText etNroPago =  item.findViewById(R.id.etdNroPago);
+        etNroPago.setText((""+ pago.getNum_pago()));
 
         TextInputEditText etImportePago = item.findViewById(R.id.etdImportePago);
         etImportePago.setText("$" +pago.getImporte());

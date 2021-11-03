@@ -71,20 +71,6 @@ public class PagosFragment extends Fragment
                 adapter = new PagoAdapter(context, R.layout.contrato_fragment, contratos, getLayoutInflater());
 
                 lvContratos.setAdapter(adapter);
-
-                /*lvContratos.setOnItemClickListener(new AdapterView.OnItemClickListener()
-                {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-                    {
-                        Contrato contrato = adapter.contratos.get(position);
-                        Bundle bundle = new Bundle();
-                        bundle.putSerializable("id", contrato.getId());
-
-                        Navigation.findNavController(getActivity(), R.id.nav_host_fragment)
-                                                        .navigate(R.id.pagoFragment, bundle);
-                    }
-                });*/
             }
         });
 

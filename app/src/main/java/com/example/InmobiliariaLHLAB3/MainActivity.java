@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.InmobiliariaLHLAB3.modelo.Propietario;
+import com.example.InmobiliariaLHLAB3.request.ApiClient;
 import com.example.InmobiliariaLHLAB3.ui.perfil.PerfilViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -42,18 +43,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        /*FloatingActionButton fab = findViewById(R.id.fab);
-
-        fab.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
@@ -73,7 +62,7 @@ public class MainActivity extends AppCompatActivity
 
                 //setea el avatar....
                 Glide.with(MainActivity.this)
-                        .load("http://192.168.1.104:5000" + propietario.getAvatar())
+                        .load(ApiClient.getPath() + propietario.getAvatar())
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(imageAvatar);
 

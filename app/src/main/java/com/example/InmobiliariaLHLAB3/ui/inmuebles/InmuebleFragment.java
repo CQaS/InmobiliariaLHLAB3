@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.InmobiliariaLHLAB3.R;
+import com.example.InmobiliariaLHLAB3.request.ApiClient;
 import com.google.android.material.textfield.TextInputEditText;
 
 import com.example.InmobiliariaLHLAB3.modelo.Inmueble;
@@ -91,7 +92,7 @@ public class InmuebleFragment extends Fragment
 
                 //setea la imagen....
                 Glide.with(context)
-                        .load("http://192.168.1.104:5000" + inmueble.getFoto())
+                        .load(ApiClient.getPath() + inmueble.getFoto())
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(imagen);
 

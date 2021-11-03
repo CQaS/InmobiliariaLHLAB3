@@ -57,6 +57,7 @@ public class InmuebleViewModel extends AndroidViewModel
 
     public void editarInmueble(Inmueble inmu, boolean dis)
     {
+
         inmu.setDisponible(dis?1:0);
         Call<Inmueble> inmueble = ApiClient.getMyApiInterface().EditarInmueble(inmu.getId_Inmu(), inmu, ApiClient.obtenerToken(context));
 
@@ -67,7 +68,8 @@ public class InmuebleViewModel extends AndroidViewModel
             {
                 if(response.isSuccessful())
                 {
-                    inmuebleMutable.setValue(response.body());
+                    inmuebleMutable.postValue(response.body());
+                    error.setValue("OK: Actualizado!");
                 }
                 else
                 {

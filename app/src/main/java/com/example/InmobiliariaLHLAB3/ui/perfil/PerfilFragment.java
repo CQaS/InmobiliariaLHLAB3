@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.InmobiliariaLHLAB3.R;
+import com.example.InmobiliariaLHLAB3.request.ApiClient;
 import com.google.android.material.textfield.TextInputEditText;
 
 import com.example.InmobiliariaLHLAB3.modelo.Propietario;
@@ -66,7 +67,7 @@ public class PerfilFragment extends Fragment
             {
                 //setea el avatar....
                 Glide.with(context)
-                        .load("http://192.168.1.104:5000" + propietario.getAvatar())
+                        .load(ApiClient.getPath() + propietario.getAvatar())
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(imageAvatar);
 

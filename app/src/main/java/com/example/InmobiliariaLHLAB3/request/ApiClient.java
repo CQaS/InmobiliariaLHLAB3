@@ -23,7 +23,10 @@ public class ApiClient
 {
 
     private static final String PATH = "http://192.168.1.104:5000/Api/";
-    //1.1
+    public static String getPath()
+    {
+        return PATH;
+    }
 
     public  static  MyApiInterface myApiInterface;
 
