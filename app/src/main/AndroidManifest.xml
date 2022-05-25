@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.InmobiliariaLHLAB3">
+    package="com.example.MedTurno">
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <application
@@ -13,7 +13,7 @@
         android:usesCleartextTraffic="true">
 
         <!--Activity principal-->
-        <activity android:name="com.example.InmobiliariaLHLAB3.ui.login.LoginActivity">
+        <activity android:name="com.example.MedTurno.ui.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +24,7 @@
 
 
         <activity
-            android:name="com.example.InmobiliariaLHLAB3.MainActivity"
+            android:name="com.example.MedTurno.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
