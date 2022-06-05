@@ -17,9 +17,18 @@
         android:label="Salir"
         tools:layout="@layout/fragment_logout" />
     <fragment
-        android:id="@+id/doctoresFragment"
+        android:id="@+id/nav_Turnos"
+        android:name="com.example.MedTurno.ui.turnos.TurnosFragment"
+        android:label="TurnosFragment" />
+    <fragment
+        android:id="@+id/nav_doctores"
         android:name="com.example.MedTurno.ui.doctores.DoctoresFragment"
         android:label="DoctoresFragment" />
+    <fragment
+        android:id="@+id/mapaInicioFragment"
+        android:name="com.example.MedTurno.ui.mapaInicio.MapaInicio"
+        android:label="Nuestra Ubicacion"
+        tools:layout="@layout/fragment_mapa_inicio" />
     <activity
         android:id="@+id/loginActivity"
         android:name="com.example.MedTurno.ui.login.LoginActivity"

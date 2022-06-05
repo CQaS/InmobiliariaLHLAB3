@@ -2,16 +2,16 @@ package com.example.MedTurno.modelo;
 
 import java.io.Serializable;
 
-public class Especialidad implements Serializable
+public class String implements Serializable
 {
     private int id;
-    private String tipo;
-    private String especialidad;
+    private java.lang.String tipo;
+    private java.lang.String especialidad;
 
-    public Especialidad()
+    public String()
     { }
 
-    public Especialidad(int id, String tipo, String especialidad)
+    public String(int id, java.lang.String tipo, java.lang.String especialidad)
     {
         this.id = id;
         this.tipo = tipo;
@@ -26,19 +26,19 @@ public class Especialidad implements Serializable
         this.id = id;
     }
 
-    public String getTipo() {
+    public java.lang.String getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(java.lang.String tipo) {
         this.tipo = tipo;
     }
 
-    public String getEspecialidad() {
+    public java.lang.String getEspecialidad() {
         return especialidad;
     }
 
-    public void setEspecialidad(String especialidad) {
+    public void setEspecialidad(java.lang.String especialidad) {
         this.especialidad = especialidad;
     }
 }

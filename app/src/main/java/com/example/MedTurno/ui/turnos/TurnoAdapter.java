@@ -1,4 +1,4 @@
-package com.example.MedTurno.ui.doctores;
+package com.example.MedTurno.ui.turnos;
 
 import android.content.Context;
 import android.os.Build;
@@ -12,24 +12,24 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.example.MedTurno.R;
-import com.example.MedTurno.modelo.Doctor;
+import com.example.MedTurno.modelo.Turnos;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.List;
 
-public class DoctorAdapter extends ArrayAdapter<Doctor>
+public class TurnoAdapter extends ArrayAdapter<Turnos>
 {
 
     private  Context context;
-    private List<Doctor> doctores;
+    private List<Turnos> turnos;
     private LayoutInflater li;
 
-    public DoctorAdapter(@NonNull Context context, int resource, @NonNull List<Doctor> objects, LayoutInflater layoutInflater)
+    public TurnoAdapter(@NonNull Context context, int resource, @NonNull List<Turnos> objects, LayoutInflater layoutInflater)
     {
         super(context, resource, objects);
 
         context = context;
-        doctores = objects;
+        turnos = objects;
         li = layoutInflater;
     }
 
@@ -42,17 +42,17 @@ public class DoctorAdapter extends ArrayAdapter<Doctor>
 
         if(item == null)
         {
-            item = li.inflate(R.layout.doctor_fragment,parent,false);
+            item = li.inflate(R.layout.turno_fragment,parent,false);
         }
 
-        Doctor doctores = this.doctores.get(position);
+        Turnos turnos = this.turnos.get(position);
 
 
-        TextInputEditText nombreDoc = item.findViewById(R.id.etNombreDoc);;
-        nombreDoc.setText(doctores.getNombre());
+        TextInputEditText fechas = item.findViewById(R.id.etFechas);;
+        fechas.setText(turnos.getStart().toString());
 
-        TextInputEditText especialidad = item.findViewById(R.id.etEspecialidad);
-        especialidad.setText(doctores.getEspecialidad() + "\n" + doctores.getHorarioatencion());
+        TextInputEditText especialidad = item.findViewById(R.id.etEspecialista);
+        especialidad.setText(turnos.getDoctor().getNombre());
 
         return  item;
     }

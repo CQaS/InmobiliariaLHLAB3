@@ -1,4 +1,4 @@
-package com.example.MedTurno.ui.doctores;
+package com.example.MedTurno.ui.turnos;
 
 import android.app.Application;
 import android.content.Context;
@@ -8,8 +8,10 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.example.MedTurno.modelo.Doctor;
+import com.example.MedTurno.modelo.Turnos;
 import com.example.MedTurno.request.ApiClient;
 
 import java.util.ArrayList;
@@ -18,27 +20,26 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
-public class DoctoresViewModel extends AndroidViewModel
+public class TurnosViewModel extends AndroidViewModel
 {
     private Context context;
     private MutableLiveData<String> error;
-    private ArrayAdapter<Doctor> adapter;
-    private MutableLiveData<ArrayList<Doctor>> doctoresMutable;
+    private ArrayAdapter<Turnos> adapter;
+    private MutableLiveData<ArrayList<Turnos>> turnosMutable;
 
-    public DoctoresViewModel(@NonNull Application application)
+    public TurnosViewModel(@NonNull Application application)
     {
         super(application);
         context=application.getApplicationContext();
     }
 
-    public LiveData<ArrayList<Doctor>> getDoctores()
+    public LiveData<ArrayList<Turnos>> getTurnos()
     {
-        if(doctoresMutable == null)
+        if(turnosMutable == null)
         {
-            doctoresMutable = new MutableLiveData<>();
+            turnosMutable = new MutableLiveData<>();
         }
-        return doctoresMutable;
+        return turnosMutable;
     }
 
     public LiveData<String> getError()
@@ -51,18 +52,18 @@ public class DoctoresViewModel extends AndroidViewModel
     }
 
 
-    public void cargarDoctores()
+    public void cargarTurnos()
     {
-        Call<ArrayList<Doctor>> doctores = ApiClient.getMyApiInterface().ListaDoctor(ApiClient.obtenerToken(context));
+        Call<ArrayList<Turnos>> turnoslist = ApiClient.getMyApiInterface().ListaTurnos(ApiClient.obtenerToken(context));
 
-        doctores.enqueue(new Callback<ArrayList<Doctor>>()
+        turnoslist.enqueue(new Callback<ArrayList<Turnos>>()
         {
             @Override
-            public void onResponse(Call<ArrayList<Doctor>> call, Response<ArrayList<Doctor>> response)
+            public void onResponse(Call<ArrayList<Turnos>> call, Response<ArrayList<Turnos>> response)
             {
                 if (response.isSuccessful())
-                 {
-                    doctoresMutable.postValue(response.body());
+                {
+                    turnosMutable.postValue(response.body());
                 }
                 else
                 {
@@ -71,12 +72,11 @@ public class DoctoresViewModel extends AndroidViewModel
             }
 
             @Override
-            public void onFailure(Call<ArrayList<Doctor>> call, Throwable t)
+            public void onFailure(Call<ArrayList<Turnos>> call, Throwable t)
             {
                 error.setValue(t.toString());
 
             }
         });
     }
-
 }

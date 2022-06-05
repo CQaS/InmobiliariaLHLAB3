@@ -3,13 +3,13 @@ package com.example.MedTurno.modelo;
 public class Usuario
 {
     private int id;
-    private String nombre;
+    private java.lang.String nombre;
     private int dni;
     private String fecNac;
-    private String mail;
+    private java.lang.String mail;
     private int telefono;
     private String avatar;
-    private String password;
+    private java.lang.String password;
     private String pregunta;
     private int rol;
     private String fecAlta;
@@ -21,7 +21,7 @@ public class Usuario
     public Usuario()
     { }
 
-    public Usuario(int id, String nombre, int dni, String fecNac, String mail, int telefono, String avatar, String password, String pregunta, int rol, String fecAlta, int idprestador, Prestador prestador, int idDireccion, Direccion direccion)
+    public Usuario(int id, java.lang.String nombre, int dni, String fecNac, java.lang.String mail, int telefono, String avatar, java.lang.String password, String pregunta, int rol, String fecAlta, int idprestador, Prestador prestador, int idDireccion, Direccion direccion)
     {
         this.id = id;
         this.nombre = nombre;
@@ -48,11 +48,11 @@ public class Usuario
         this.id = id;
     }
 
-    public String getNombre() {
+    public java.lang.String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public void setNombre(java.lang.String nombre) {
         this.nombre = nombre;
     }
 
@@ -72,11 +72,11 @@ public class Usuario
         this.fecNac = fecNac;
     }
 
-    public String getMail() {
+    public java.lang.String getMail() {
         return mail;
     }
 
-    public void setMail(String mail) {
+    public void setMail(java.lang.String mail) {
         this.mail = mail;
     }
 
@@ -96,11 +96,11 @@ public class Usuario
         this.avatar = avatar;
     }
 
-    public String getPassword() {
+    public java.lang.String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(java.lang.String password) {
         this.password = password;
     }
 

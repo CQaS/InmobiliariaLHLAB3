@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,8 +28,9 @@ public class PerfilFragment extends Fragment
 {
 
     private PerfilViewModel vm;
-    private TextInputEditText etDni, etNombre, etDireccion, etTelefono;
-    private ImageView imageAvatar;
+    private TextInputEditText etNombre, etTelefono, etPassword, etRePassword;
+    private TextView etPaciente;
+    //private ImageView imageAvatar;
     private Button btGuardar,btEditar;
     private Usuario usuarioActual;
     Context context;
@@ -49,10 +51,11 @@ public class PerfilFragment extends Fragment
     private  void  inicializar(View view)
     {
         final ImageView imageAvatar = (ImageView) view.findViewById(R.id.imageAvatar);
-        etDni=view.findViewById(R.id.etDni);
+        etPaciente = view.findViewById(R.id.etPaciente);
         etNombre=view.findViewById(R.id.etNombre);
-        etDireccion=view.findViewById(R.id.etDireccion);
         etTelefono=view.findViewById(R.id.etTelefono);
+        etPassword=view.findViewById(R.id.etPassword);
+        etRePassword=view.findViewById(R.id.etRePassword);
         btEditar=view.findViewById(R.id.btEditar);
         btGuardar =view.findViewById(R.id.btAceptar);
 
@@ -69,15 +72,15 @@ public class PerfilFragment extends Fragment
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(imageAvatar);
 
+                etPaciente.setText(usuario.getNombre());
                 etNombre.setText(usuario.getNombre());
-                etDni.setText(usuario.getDni());
-                etDireccion.setText(usuario.getDireccion().getCalle());
                 etTelefono.setText(usuario.getTelefono());
 
                 usuarioActual = usuario;
 
             }
         });
+
         vm.recuperarUsuario();
 
         btEditar.setOnClickListener(new View.OnClickListener()
@@ -86,8 +89,8 @@ public class PerfilFragment extends Fragment
             public void onClick(View v)
             {
                 etNombre.setEnabled(true);
-                etDni.setEnabled(true);
-                etDireccion.setEnabled(true);
+                etPassword.setEnabled(true);
+                etRePassword.setEnabled(true);
                 etTelefono.setEnabled(true);
                 btEditar.setVisibility(View.GONE);
                 btGuardar.setVisibility(View.VISIBLE);
@@ -100,19 +103,15 @@ public class PerfilFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                //Propietario prop = new Propietario(propietarioActual.getId(), etNombre.getText().toString(), etDni.getText().toString(), etDireccion.getText().toString(), etTelefono.getText().toString(), propietarioActual.getEmail(), propietarioActual.getClave());
-
                 usuarioActual.setNombre(etNombre.getText().toString());
-                usuarioActual.setDni(Integer.parseInt(etDni.getText().toString()));
-                //usuarioActual.setDireccion(etDireccion.getText().toString());
                 usuarioActual.setTelefono(Integer.parseInt(etTelefono.getText().toString()));
 
-                vm.editarPerfil(usuarioActual);
+                vm.editarPerfil(usuarioActual, etPassword.getText().toString(), etRePassword.getText().toString());
 
                 etNombre.setEnabled(false);
-                etDni.setEnabled(false);
-                etDireccion.setEnabled(false);
                 etTelefono.setEnabled(false);
+                etPassword.setEnabled(false);
+                etRePassword.setEnabled(false);
                 btEditar.setVisibility(View.VISIBLE);
                 btGuardar.setVisibility(View.INVISIBLE);
             }

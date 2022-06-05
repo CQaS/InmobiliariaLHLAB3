@@ -5,13 +5,21 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/mapaInicioFragment"
+            android:icon="@drawable/iniciomapa"
+            android:title="Inicio" />
+        <item
             android:id="@+id/nav_perfil"
             android:icon="@drawable/usuario"
             android:title="Perfil" />
         <item
+            android:id="@+id/nav_turnos"
+            android:icon="@drawable/usuario"
+            android:title="Turnos" />
+        <item
             android:id="@+id/nav_doctores"
             android:icon="@drawable/usuario"
-            android:title="Propiedades" />
+            android:title="Doctores" />
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/logout"

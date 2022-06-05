@@ -3,10 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#21466A"
+    android:background="#fff"
     android:orientation="vertical"
-    android:padding="40dp"
-   >
+    android:padding="40dp">
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -14,7 +13,7 @@
         android:layout_height="wrap_content"
         android:focusableInTouchMode="false"
         android:focusable="false"
-        android:textColorHint="#ffffff"
+        android:textColorHint="#0C0606"
         android:layout_marginTop="5dp">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -23,10 +22,11 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:enabled="false"
-            android:hint="Nombre Doc"
+            android:hint="Nombre de Especialista"
             android:inputType="text"
-            android:textColor="#ffffff"
-            android:textSize="20sp" />
+            android:textColor="#050202"
+            android:textSize="15sp"
+            tools:ignore="TouchTargetSizeCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -35,19 +35,22 @@
         android:layout_height="wrap_content"
         android:focusableInTouchMode="false"
         android:focusable="false"
-        android:textColorHint="#ffffff"
-        android:layout_marginTop="5dp">
+        android:textColorHint="#0C0707"
+        android:layout_marginTop="5dp"
+        android:background="@color/teal_200">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etHorario"
+            android:id="@+id/etEspecialidad"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:ems="10"
             android:enabled="false"
             android:hint="Especialidad"
             android:inputType="text"
-            android:textColor="#ffffff"
-            android:textSize="20sp" />
+            android:textColor="#0E0404"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </LinearLayout>

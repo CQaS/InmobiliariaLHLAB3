@@ -5,16 +5,16 @@ import java.io.Serializable;
 public class Doctor implements Serializable
 {
     private int id;
-    private String nombre;
-    private String matricula;
-    private String horarioatencion;
+    private java.lang.String nombre;
+    private java.lang.String matricula;
+    private java.lang.String horarioatencion;
     private int idEspecialidad;
-    private Especialidad especialidad;
+    private java.lang.String especialidad;
 
     public Doctor()
     { }
 
-    public Doctor(int id, String nombre, String matricula, String horarioatencion, int idEspecialidad, Especialidad especialidad)
+    public Doctor(int id, java.lang.String nombre, java.lang.String matricula, java.lang.String horarioatencion, int idEspecialidad, java.lang.String especialidad)
     {
         this.id = id;
         this.nombre = nombre;
@@ -32,27 +32,27 @@ public class Doctor implements Serializable
         this.id = id;
     }
 
-    public String getNombre() {
+    public java.lang.String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public void setNombre(java.lang.String nombre) {
         this.nombre = nombre;
     }
 
-    public String getMatricula() {
+    public java.lang.String getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(String matricula) {
+    public void setMatricula(java.lang.String matricula) {
         this.matricula = matricula;
     }
 
-    public String getHorarioatencion() {
+    public java.lang.String getHorarioatencion() {
         return horarioatencion;
     }
 
-    public void setHorarioatencion(String horarioatencion) {
+    public void setHorarioatencion(java.lang.String horarioatencion) {
         this.horarioatencion = horarioatencion;
     }
 
@@ -64,11 +64,11 @@ public class Doctor implements Serializable
         this.idEspecialidad = idEspecialidad;
     }
 
-    public Especialidad getEspecialidad() {
+    public java.lang.String getEspecialidad() {
         return especialidad;
     }
 
-    public void setEspecialidad(Especialidad especialidad) {
+    public void setEspecialidad(java.lang.String especialidad) {
         this.especialidad = especialidad;
     }
 }
