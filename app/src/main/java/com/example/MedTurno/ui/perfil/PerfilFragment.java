@@ -14,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -22,7 +21,11 @@ import com.example.MedTurno.R;
 import com.example.MedTurno.modelo.Usuario;
 import com.example.MedTurno.request.ApiClient;
 import com.google.android.material.textfield.TextInputEditText;
-
+        /*
+        configurations.all {
+            resolutionStrategy { force 'androidx.work:work-runtime:2.6.0' }
+        }
+        */
 
 public class PerfilFragment extends Fragment
 {
@@ -50,7 +53,7 @@ public class PerfilFragment extends Fragment
 
     private  void  inicializar(View view)
     {
-        final ImageView imageAvatar = (ImageView) view.findViewById(R.id.imageAvatar);
+        final ImageView imageAvatar = (ImageView) view.findViewById(R.id.imgAvatar);
         etPaciente = view.findViewById(R.id.etPaciente);
         etNombre=view.findViewById(R.id.etNombre);
         etTelefono=view.findViewById(R.id.etTelefono);
