@@ -4,54 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo">
+    android:background="@color/white">
 
-    <TextView
-        android:id="@+id/etPaciente"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="8dp"
-        android:padding="6dp"
-        android:text="paciente"
-        android:textColor="#ffffff"
-        android:background="#A900BCD4"
-        android:textSize="50sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="92dp"
-        android:text="Hola,"
-        android:textColor="#ffffff"
-        android:textSize="40sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imgAvatar"
-        android:layout_width="137dp"
-        android:layout_height="89dp"
-        app:layout_constraintBottom_toTopOf="@+id/etPaciente"
+        android:id="@+id/logoNT"
+        android:layout_width="181dp"
+        android:layout_height="164dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.941"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView2"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/usuario" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/btnsolicitar" />
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPaciente">
+        app:layout_constraintTop_toBottomOf="@+id/logoNT"
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -69,55 +46,25 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Nombre"
+                    android:text="Hora estimada de su turno:"
                     android:textColor="#3F51B5"
                     android:textSize="26sp" />
-
-                <EditText
-                    android:id="@+id/etNombre"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/edittext_background"
-                    android:ems="10"
-                    android:enabled="false"
-                    android:hint=""
-                    android:inputType="textPersonName"
-                    android:paddingLeft="10dp"
-                    android:textColorHint="#f5f5f5"
-                    android:textSize="16sp"
-                    tools:ignore="SpeakableTextPresentCheck" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
-                android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Telefono"
-                    android:textColor="#3F51B5"
-                    android:textSize="26sp" />
-
-                <EditText
-                    android:id="@+id/etTelefono"
+                    android:id="@+id/etHora"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/edittext_background"
-                    android:ems="10"
+                    android:gravity="center"
                     android:enabled="false"
                     android:inputType="text"
                     android:paddingLeft="10dp"
-                    android:textColorHint="#f5f5f5"
-                    android:textSize="16sp"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    android:text="00:00hs hacer click y Seleccionar"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
             </LinearLayout>
 
             <LinearLayout
@@ -130,24 +77,56 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Password"
+                    android:text="Dia:"
                     android:textColor="#3F51B5"
                     android:textSize="26sp" />
 
-                <EditText
-                    android:id="@+id/etPassword"
+                <TextView
+                    android:id="@+id/etFecha"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/edittext_background"
                     android:ems="10"
-                    android:hint="********"
+                    android:text="00-00-0000 Selecciona una fecha"
+                    android:enabled="false"
+                    android:inputType="text"
+                    android:paddingLeft="10dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Razon:"
+                    android:textColor="#3F51B5"
+                    android:textSize="26sp" />
+
+                <EditText
+                    android:id="@+id/etRazon"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/edittext_background"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:hint="Escribir aqui..."
                     android:inputType="textPassword"
                     android:paddingLeft="10dp"
                     android:textColorHint="#f5f5f5"
-                    android:textSize="16sp"
-                    android:enabled="false"/>
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -161,49 +140,40 @@
                     android:id="@+id/textView4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Repite Password"
+                    android:text="Selecciona Profecional:"
                     android:textColor="#3F51B5"
                     android:textSize="26sp" />
 
-                <EditText
-                    android:id="@+id/etRePassword"
+                <Spinner
+                    android:id="@+id/spProfesionales"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
+                    android:layout_weight="1"
                     android:background="@drawable/edittext_background"
-                    android:ems="10"
-                    android:hint="********"
-                    android:inputType="textPassword"
-                    android:paddingLeft="10dp"
-                    android:textColorHint="#f5f5f5"
-                    android:textSize="16sp"
-                    android:enabled="false"/>
+                    android:padding="25dp"
+                    tools:ignore="SpeakableTextPresentCheck" />
             </LinearLayout>
 
             <Button
-                android:id="@+id/btEditar"
+                android:id="@+id/btSolicitar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
                 android:background="@drawable/orange_btn_background"
-                android:text="Editar"
+                android:text="Solicitar"
                 android:textColor="#ffffff"
                 android:textSize="18sp" />
-            <Button
-                android:id="@+id/btAceptar"
+
+            <TextView
+                android:id="@+id/profesionalSelect"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/orange_btn_background"
-                android:text="Aceptar"
-                android:textColor="#ffffff"
-                android:textSize="18sp"
-                android:visibility="gone"/>
+                android:text="TextView"
+                android:visibility="invisible" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

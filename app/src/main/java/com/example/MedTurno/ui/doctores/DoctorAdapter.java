@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -48,10 +49,10 @@ public class DoctorAdapter extends ArrayAdapter<Doctor>
         Doctor doctores = this.doctores.get(position);
 
 
-        TextInputEditText nombreDoc = item.findViewById(R.id.etNombreDoc);;
+        TextView nombreDoc = item.findViewById(R.id.etNombreDoc);;
         nombreDoc.setText(doctores.getNombre());
 
-        TextInputEditText especialidad = item.findViewById(R.id.etEspecialidad);
+        TextView especialidad = item.findViewById(R.id.etEspecialidad);
         especialidad.setText(doctores.getEspecialidad() + "\n" + doctores.getHorarioatencion());
 
         return  item;

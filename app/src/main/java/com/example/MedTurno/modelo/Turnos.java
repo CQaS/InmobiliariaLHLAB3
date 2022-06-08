@@ -5,13 +5,13 @@ import java.io.Serializable;
 public class Turnos implements Serializable
 {
     private int id;
-    private String fechaSolicitud;
-    private String start;
-    private String end;
-    private String color;
-    private String descripcion;
-    private String textColor;
-    private String title;
+    private java.lang.String fechaSolicitud;
+    private java.lang.String start;
+    private java.lang.String end;
+    private java.lang.String color;
+    private java.lang.String descripcion;
+    private java.lang.String textColor;
+    private java.lang.String title;
     private int idPrestador;
     private Prestador prestador;
     private int idDoctor;
@@ -22,7 +22,7 @@ public class Turnos implements Serializable
     public Turnos()
     { }
 
-    public Turnos(int id, String fechaSolicitud, String start, String end, String color, String descripcion, String textColor, String title, int idPrestador, Prestador prestador, int idDoctor, Doctor doctor, int idUsuario, Usuario usuario)
+    public Turnos(int id, java.lang.String fechaSolicitud, java.lang.String start, java.lang.String end, java.lang.String color, java.lang.String descripcion, java.lang.String textColor, java.lang.String title, int idPrestador, Prestador prestador, int idDoctor, Doctor doctor, int idUsuario, Usuario usuario)
     {
         this.id = id;
         this.fechaSolicitud = fechaSolicitud;
@@ -48,59 +48,59 @@ public class Turnos implements Serializable
         this.id = id;
     }
 
-    public String getFechaSolicitud() {
+    public java.lang.String getFechaSolicitud() {
         return fechaSolicitud;
     }
 
-    public void setFechaSolicitud(String fechaSolicitud) {
+    public void setFechaSolicitud(java.lang.String fechaSolicitud) {
         this.fechaSolicitud = fechaSolicitud;
     }
 
-    public String getStart() {
+    public java.lang.String getStart() {
         return start;
     }
 
-    public void setStart(String start) {
+    public void setStart(java.lang.String start) {
         this.start = start;
     }
 
-    public String getEnd() {
+    public java.lang.String getEnd() {
         return end;
     }
 
-    public void setEnd(String end) {
+    public void setEnd(java.lang.String end) {
         this.end = end;
     }
 
-    public String getColor() {
+    public java.lang.String getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(java.lang.String color) {
         this.color = color;
     }
 
-    public String getDescripcion() {
+    public java.lang.String getDescripcion() {
         return descripcion;
     }
 
-    public void setDescripcion(String descripcion) {
+    public void setDescripcion(java.lang.String descripcion) {
         this.descripcion = descripcion;
     }
 
-    public String getTextColor() {
+    public java.lang.String getTextColor() {
         return textColor;
     }
 
-    public void setTextColor(String textColor) {
+    public void setTextColor(java.lang.String textColor) {
         this.textColor = textColor;
     }
 
-    public String getTitle() {
+    public java.lang.String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(java.lang.String title) {
         this.title = title;
     }
 

@@ -5,14 +5,14 @@ public class Usuario
     private int id;
     private java.lang.String nombre;
     private int dni;
-    private String fecNac;
+    private java.lang.String fecNac;
     private java.lang.String mail;
     private int telefono;
-    private String avatar;
+    private java.lang.String avatar;
     private java.lang.String password;
-    private String pregunta;
+    private java.lang.String pregunta;
     private int rol;
-    private String fecAlta;
+    private java.lang.String fecAlta;
     private int idprestador;
     private Prestador prestador;
     private int idDireccion;
@@ -21,7 +21,7 @@ public class Usuario
     public Usuario()
     { }
 
-    public Usuario(int id, java.lang.String nombre, int dni, String fecNac, java.lang.String mail, int telefono, String avatar, java.lang.String password, String pregunta, int rol, String fecAlta, int idprestador, Prestador prestador, int idDireccion, Direccion direccion)
+    public Usuario(int id, java.lang.String nombre, int dni, java.lang.String fecNac, java.lang.String mail, int telefono, java.lang.String avatar, java.lang.String password, java.lang.String pregunta, int rol, java.lang.String fecAlta, int idprestador, Prestador prestador, int idDireccion, Direccion direccion)
     {
         this.id = id;
         this.nombre = nombre;
@@ -64,11 +64,11 @@ public class Usuario
         this.dni = dni;
     }
 
-    public String getFecNac() {
+    public java.lang.String getFecNac() {
         return fecNac;
     }
 
-    public void setFecNac(String fecNac) {
+    public void setFecNac(java.lang.String fecNac) {
         this.fecNac = fecNac;
     }
 
@@ -88,11 +88,11 @@ public class Usuario
         this.telefono = telefono;
     }
 
-    public String getAvatar() {
+    public java.lang.String getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(String avatar) {
+    public void setAvatar(java.lang.String avatar) {
         this.avatar = avatar;
     }
 
@@ -104,11 +104,11 @@ public class Usuario
         this.password = password;
     }
 
-    public String getPregunta() {
+    public java.lang.String getPregunta() {
         return pregunta;
     }
 
-    public void setPregunta(String pregunta) {
+    public void setPregunta(java.lang.String pregunta) {
         this.pregunta = pregunta;
     }
 
@@ -120,11 +120,11 @@ public class Usuario
         this.rol = rol;
     }
 
-    public String getFecAlta() {
+    public java.lang.String getFecAlta() {
         return fecAlta;
     }
 
-    public void setFecAlta(String fecAlta) {
+    public void setFecAlta(java.lang.String fecAlta) {
         this.fecAlta = fecAlta;
     }
 

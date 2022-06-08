@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#21466A"
+    android:background="#fff"
     android:orientation="vertical"
     android:padding="40dp">
 
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:focusableInTouchMode="false"
         android:focusable="false"
-        android:textColorHint="#ffffff"
+        android:textColorHint="#050202"
         android:layout_marginTop="5dp">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -24,7 +24,7 @@
             android:enabled="false"
             android:hint="Fechas"
             android:inputType="text"
-            android:textColor="#ffffff"
+            android:textColor="#050202"
             android:textSize="20sp"
             tools:ignore="TouchTargetSizeCheck" />
 
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:focusableInTouchMode="false"
         android:focusable="false"
-        android:textColorHint="#ffffff"
+        android:textColorHint="#050202"
         android:layout_marginTop="5dp">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -46,7 +46,7 @@
             android:enabled="false"
             android:hint="Especialista"
             android:inputType="text"
-            android:textColor="#ffffff"
+            android:textColor="#050202"
             android:textSize="20sp"
             tools:ignore="TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>

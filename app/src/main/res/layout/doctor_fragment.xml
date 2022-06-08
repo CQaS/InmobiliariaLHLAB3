@@ -16,41 +16,39 @@
         android:textColorHint="#0C0606"
         android:layout_marginTop="5dp">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <TextView
             android:id="@+id/etNombreDoc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:ems="10"
-            android:enabled="false"
-            android:hint="Nombre de Especialista"
             android:inputType="text"
             android:textColor="#050202"
             android:textSize="15sp"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:text="Nombre de Especialidad" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:focusableInTouchMode="false"
-        android:focusable="false"
-        android:textColorHint="#0C0707"
+        android:layout_height="101dp"
         android:layout_marginTop="5dp"
-        android:background="@color/teal_200">
+        android:background="@color/teal_200"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:textColorHint="#0C0707">
 
-        <com.google.android.material.textfield.TextInputEditText
+
+        <TextView
             android:id="@+id/etEspecialidad"
             android:layout_width="match_parent"
             android:layout_height="45dp"
+            android:layout_weight="1"
             android:ems="10"
-            android:enabled="false"
-            android:hint="Especialidad"
-            android:inputType="text"
+            android:text="Especialidad"
             android:textColor="#0E0404"
             android:textSize="20sp"
-            android:textStyle="bold"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:textStyle="bold" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </LinearLayout>

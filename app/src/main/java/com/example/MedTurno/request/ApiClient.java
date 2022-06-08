@@ -59,6 +59,9 @@ public class ApiClient
 
         @GET("Turnos")
         Call<ArrayList<Turnos>> ListaTurnos(@Header("Authorization") String token);
+
+        @POST("Turnos")
+        Call<Turnos> NuevoTurno(@Body Turnos turno, @Header("Authorization") String token);
     }
 
     public  static String obtenerToken(Context context)

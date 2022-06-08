@@ -69,7 +69,7 @@ public class TurnosFragment extends Fragment
             @Override
             public void onChanged(String er)
             {
-                Toast.makeText(context,er, Toast.LENGTH_LONG).show();
+                Toast.makeText(context,"errorT " + er, Toast.LENGTH_LONG).show();
             }
         });
 

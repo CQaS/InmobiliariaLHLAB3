@@ -21,13 +21,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PerfilViewModel extends AndroidViewModel {
+public class PerfilViewModel extends AndroidViewModel
+{
 
     private MutableLiveData<Usuario> usuarioMutable;
     private MutableLiveData<String> error;
     private Context context;
 
-    public PerfilViewModel(@NonNull Application application) {
+    public PerfilViewModel(@NonNull Application application)
+    {
         super(application);
         context=application.getApplicationContext();
     }
@@ -51,6 +53,7 @@ public class PerfilViewModel extends AndroidViewModel {
 
     public void recuperarUsuario()
     {
+        Log.d("nullnull", "recuperar");
 
         Call<Usuario> usuario = ApiClient.getMyApiInterface().MiPerfil(ApiClient.obtenerToken(context));
 
@@ -65,6 +68,7 @@ public class PerfilViewModel extends AndroidViewModel {
                 }
                 else
                 {
+                    Log.d("nullnull", "ERROR2");
                     error.setValue("Perfil no encontrado");
                 }
             }
@@ -72,6 +76,7 @@ public class PerfilViewModel extends AndroidViewModel {
             @Override
             public void onFailure(Call<Usuario> call, Throwable t)
             {
+                Log.d("nullnull", "ERROR");
                 error.setValue("ERROR -> "+ t.getMessage());
             }
         });

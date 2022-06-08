@@ -21,11 +21,6 @@ import com.example.MedTurno.R;
 import com.example.MedTurno.modelo.Usuario;
 import com.example.MedTurno.request.ApiClient;
 import com.google.android.material.textfield.TextInputEditText;
-        /*
-        configurations.all {
-            resolutionStrategy { force 'androidx.work:work-runtime:2.6.0' }
-        }
-        */
 
 public class PerfilFragment extends Fragment
 {
@@ -42,7 +37,6 @@ public class PerfilFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState)
     {
-        vm = new ViewModelProvider(this).get(PerfilViewModel.class);
         View root = inflater.inflate(R.layout.fragment_perfil, container, false);
         context = root.getContext();
 
