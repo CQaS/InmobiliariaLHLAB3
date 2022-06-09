@@ -2,15 +2,12 @@ package com.example.MedTurno.ui.turnos;
 
 import android.app.Application;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.example.MedTurno.modelo.Doctor;
 import com.example.MedTurno.modelo.Turnos;
@@ -24,14 +21,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TurnoNuevoViewModel extends AndroidViewModel
+public class TurnoNuevosViewModel extends AndroidViewModel
 {
     private Context context;
     private MutableLiveData<String> turnoMutable;
     private MutableLiveData<String> error;
     private MutableLiveData<ArrayList<Doctor>> doctoresMutable;
 
-    public TurnoNuevoViewModel(@NonNull Application application)
+    public TurnoNuevosViewModel(@NonNull Application application)
     {
         super(application);
         context=application.getApplicationContext();

@@ -71,4 +71,9 @@ public class Doctor implements Serializable
     public void setEspecialidad(java.lang.String especialidad) {
         this.especialidad = especialidad;
     }
+
+    @Override
+    public java.lang.String toString() {
+        return "Doc " + nombre;
+    }
 }

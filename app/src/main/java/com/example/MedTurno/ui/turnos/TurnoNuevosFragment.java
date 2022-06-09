@@ -1,6 +1,5 @@
 package com.example.MedTurno.ui.turnos;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -9,11 +8,17 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.pm.ActivityInfo;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -30,39 +35,48 @@ import com.example.MedTurno.modelo.Doctor;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class TurnoNuevoFragment extends AppCompatActivity
+public class TurnoNuevosFragment extends Fragment
 {
     private TextView etFecha, etHora, select;
-    private Button btSolicitar;
+    private Button btSolicitar, btMisturnos;
     private EditText etRazon;
     private int dia, mes, anio, hora, min;
-    private TurnoNuevoViewModel tn;
+    private TurnoNuevosViewModel tn;
     private Context context;
     private Spinner spProfesionales;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.turno_nuevo_fragment);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    private TurnoNuevosViewModel mViewModel;
 
-        inicializar();
+    public static TurnoNuevosFragment newInstance() {
+        return new TurnoNuevosFragment();
     }
 
-    private void inicializar()
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState)
     {
-        etFecha = findViewById(R.id.etFecha);
-        etHora = findViewById(R.id.etHora);
-        etRazon = findViewById(R.id.etRazon);
-        btSolicitar = findViewById(R.id.btSolicitar);
-        spProfesionales = findViewById(R.id.spProfesionales);
-        select = findViewById(R.id.profesionalSelect);
+        View root = inflater.inflate(R.layout.turno_nuevos_fragment, container, false);
+        context = root.getContext();
 
-        tn = new ViewModelProvider(this).get(TurnoNuevoViewModel.class);
+        inicializar(root);
+
+        return root;
+    }
+
+    private void inicializar(View root)
+    {
+        etFecha = root.findViewById(R.id.etFecha);
+        etHora = root.findViewById(R.id.etHora);
+        etRazon = root.findViewById(R.id.etRazon);
+        btSolicitar = root.findViewById(R.id.btSolicitar);
+        btMisturnos = root.findViewById(R.id.btnMisturnos);
+        spProfesionales = root.findViewById(R.id.spProfesionales);
+        select = root.findViewById(R.id.profesionalSelect);
+
+        tn = new ViewModelProvider(this).get(TurnoNuevosViewModel.class);
 
         //Turno OK.........
-        tn.getTurnoMutable().observe(this, new Observer<String>()
+        tn.getTurnoMutable().observe(getViewLifecycleOwner(), new Observer<String>()
         {
             @Override
             public void onChanged(String mensaje)
@@ -81,13 +95,13 @@ public class TurnoNuevoFragment extends AppCompatActivity
             }
         });
 
-        tn.getDoctores().observe(this, new Observer<ArrayList<Doctor>>()
+        tn.getDoctores().observe(getViewLifecycleOwner(), new Observer<ArrayList<Doctor>>()
         {
             @Override
             public void onChanged(ArrayList<Doctor> profesionales)
             {
                 //carga el Spinner...
-                ArrayAdapter<Doctor> arrayAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, profesionales);
+                ArrayAdapter<Doctor> arrayAdapter = new ArrayAdapter<>(context, R.layout.support_simple_spinner_dropdown_item, profesionales);
                 spProfesionales.setAdapter(arrayAdapter);
 
                 //item seleccionado...
@@ -98,14 +112,13 @@ public class TurnoNuevoFragment extends AppCompatActivity
                     {
                         if(position > 0)
                         {
-                            ((TextView) parent.getChildAt(0)).setTextColor(Color.BLACK);
-                            ((TextView) parent.getChildAt(0)).setTextSize(18);
 
                             int idProf = ((Doctor)parent.getSelectedItem()).getId();
                             String nombreProf = ((Doctor)parent.getSelectedItem()).getNombre();
 
-                            Toast.makeText(TurnoNuevoFragment.this,idProf + " " + nombreProf, Toast.LENGTH_LONG).show();
-                            select.setText(idProf);
+                            Toast.makeText(context,idProf + " " + nombreProf, Toast.LENGTH_LONG).show();
+                            Log.d("spinner", nombreProf);
+                            select.setText(idProf + "");
                         }
                     }
 
@@ -118,7 +131,7 @@ public class TurnoNuevoFragment extends AppCompatActivity
             }
         });
 
-        tn.getError().observe(this, new Observer<String>()
+        tn.getError().observe(getViewLifecycleOwner(), new Observer<String>()
         {
             @Override
             public void onChanged(String mensaje)
@@ -149,7 +162,7 @@ public class TurnoNuevoFragment extends AppCompatActivity
                 mes = calendar.get(Calendar.MONTH);
                 anio = calendar.get(Calendar.YEAR);
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(TurnoNuevoFragment.this, new DatePickerDialog.OnDateSetListener()
+                DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener()
                 {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth)
@@ -170,7 +183,7 @@ public class TurnoNuevoFragment extends AppCompatActivity
                 hora = calendar.get(Calendar.HOUR);
                 min = calendar.get(Calendar.MINUTE);
 
-                TimePickerDialog timePickerDialog = new TimePickerDialog(TurnoNuevoFragment.this, new TimePickerDialog.OnTimeSetListener()
+                TimePickerDialog timePickerDialog = new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener()
                 {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute)
@@ -188,6 +201,16 @@ public class TurnoNuevoFragment extends AppCompatActivity
             public void onClick(View v)
             {
                 tn.validarTurno(etHora.getText().toString(), etFecha.getText().toString(), etRazon.getText().toString(), Integer.parseInt(select.getText().toString()));
+            }
+        });
+
+        btMisturnos.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(context, TurnosFragment.class);
+                startActivity(intent);
             }
         });
     }

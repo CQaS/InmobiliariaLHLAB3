@@ -19,8 +19,6 @@ import android.widget.Toast;
 
 import com.example.MedTurno.R;
 import com.example.MedTurno.modelo.Turnos;
-import com.example.MedTurno.ui.doctores.DoctorAdapter;
-import com.example.MedTurno.ui.doctores.DoctoresViewModel;
 
 import java.util.ArrayList;
 

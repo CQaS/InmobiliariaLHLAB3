@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,7 +27,7 @@ public class PerfilFragment extends Fragment
 {
 
     private PerfilViewModel vm;
-    private TextInputEditText etNombre, etTelefono, etPassword, etRePassword;
+    private EditText etNombre, etTelefono, etPassword, etRePassword;
     private TextView etPaciente;
     //private ImageView imageAvatar;
     private Button btGuardar,btEditar;
@@ -71,7 +72,7 @@ public class PerfilFragment extends Fragment
 
                 etPaciente.setText(usuario.getNombre());
                 etNombre.setText(usuario.getNombre());
-                etTelefono.setText(usuario.getTelefono());
+                etTelefono.setText(usuario.getTelefono() +"");
 
                 usuarioActual = usuario;
 

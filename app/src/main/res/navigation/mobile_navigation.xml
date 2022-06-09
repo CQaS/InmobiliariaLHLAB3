@@ -10,7 +10,6 @@
         android:name="com.example.MedTurno.ui.perfil.PerfilFragment"
         android:label="Perfil"
         tools:layout="@layout/fragment_perfil" />
-
     <fragment
         android:id="@+id/nav_logout"
         android:name="com.example.MedTurno.ui.logout.LogoutFragment"
@@ -18,8 +17,12 @@
         tools:layout="@layout/fragment_logout" />
     <fragment
         android:id="@+id/nav_turnos"
-        android:name="com.example.MedTurno.ui.turnos.TurnosFragment"
-        android:label="TurnosFragment" />
+        android:name="com.example.MedTurno.ui.turnos.TurnoNuevosFragment"
+        android:label="TurnosFragment" >
+        <action
+            android:id="@+id/action_nav_turnos_to_turnoNuevosFragment"
+            app:destination="@id/turnoNuevosFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_doctores"
         android:name="com.example.MedTurno.ui.doctores.DoctoresFragment"
@@ -29,9 +32,13 @@
         android:name="com.example.MedTurno.ui.mapaInicio.MapaInicio"
         android:label="Nuestra Ubicacion"
         tools:layout="@layout/fragment_mapa_inicio" />
-    <activity
-        android:id="@+id/loginActivity"
-        android:name="com.example.MedTurno.ui.login.LoginActivity"
-        android:label="LoginActivity" />
+    <fragment
+        android:id="@+id/turnoNuevosFragment"
+        android:name="com.example.MedTurno.ui.turnos.TurnoNuevosFragment"
+        android:label="TurnoNuevosFragment" >
+        <action
+            android:id="@+id/action_turnoNuevosFragment_to_nav_turnos"
+            app:destination="@id/nav_turnos" />
+    </fragment>
 
 </navigation>
