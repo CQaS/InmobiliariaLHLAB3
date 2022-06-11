@@ -1,5 +1,7 @@
 package com.example.MedTurno.ui.turnos;
 
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -24,6 +26,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -34,13 +38,18 @@ import com.example.MedTurno.modelo.Doctor;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class TurnoNuevosFragment extends Fragment
 {
-    private TextView etFecha, etHora, select;
+    private TextView etFecha, etHora;
     private Button btSolicitar, btMisturnos;
     private EditText etRazon;
-    private int dia, mes, anio, hora, min;
+    private ImageView logoNT;
+    private LinearLayout lyHora, lyDia, lyRazon, lyPro, lyBtns;
+    private int dia, mes, anio, hora, min, idProf = 0;
+    private String nombreProf;
     private TurnoNuevosViewModel tn;
     private Context context;
     private Spinner spProfesionales;
@@ -65,13 +74,18 @@ public class TurnoNuevosFragment extends Fragment
 
     private void inicializar(View root)
     {
+        logoNT = root.findViewById(R.id.logoNT);
+        lyDia = root.findViewById(R.id.lyDia);
+        lyHora = root.findViewById(R.id.lyHora);
+        lyRazon = root.findViewById(R.id.lyRazon);
+        lyPro = root.findViewById(R.id.lyProfecional);
+        lyBtns = root.findViewById(R.id.lyBotones);
         etFecha = root.findViewById(R.id.etFecha);
         etHora = root.findViewById(R.id.etHora);
         etRazon = root.findViewById(R.id.etRazon);
         btSolicitar = root.findViewById(R.id.btSolicitar);
         btMisturnos = root.findViewById(R.id.btnMisturnos);
         spProfesionales = root.findViewById(R.id.spProfesionales);
-        select = root.findViewById(R.id.profesionalSelect);
 
         tn = new ViewModelProvider(this).get(TurnoNuevosViewModel.class);
 
@@ -82,7 +96,7 @@ public class TurnoNuevosFragment extends Fragment
             public void onChanged(String mensaje)
             {
                 AlertDialog.Builder dialogo = new AlertDialog.Builder(context, R.style.AlertDialogTheme);
-                dialogo.setTitle("Atención");
+                dialogo.setTitle("MedTurno informa:");
                 dialogo.setMessage(mensaje);
 
                 dialogo.setPositiveButton("OK", new DialogInterface.OnClickListener()
@@ -113,12 +127,10 @@ public class TurnoNuevosFragment extends Fragment
                         if(position > 0)
                         {
 
-                            int idProf = ((Doctor)parent.getSelectedItem()).getId();
-                            String nombreProf = ((Doctor)parent.getSelectedItem()).getNombre();
+                            idProf = ((Doctor)parent.getSelectedItem()).getId();
+                            nombreProf = ((Doctor)parent.getSelectedItem()).getNombre();
 
                             Toast.makeText(context,idProf + " " + nombreProf, Toast.LENGTH_LONG).show();
-                            Log.d("spinner", nombreProf);
-                            select.setText(idProf + "");
                         }
                     }
 
@@ -137,7 +149,7 @@ public class TurnoNuevosFragment extends Fragment
             public void onChanged(String mensaje)
             {
                 AlertDialog.Builder dialogo = new AlertDialog.Builder(context, R.style.AlertDialogTheme);
-                dialogo.setTitle("Atención");
+                dialogo.setTitle("MedTurno informa:");
                 dialogo.setMessage(mensaje);
 
                 dialogo.setPositiveButton("OK", new DialogInterface.OnClickListener()
@@ -157,7 +169,9 @@ public class TurnoNuevosFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                final Calendar calendar = Calendar.getInstance();
+                //final Calendar calendar = Calendar.getInstance();
+                Calendar calendar = new GregorianCalendar();
+                calendar.setTime(new Date());
                 dia = calendar.get(Calendar.DAY_OF_MONTH);
                 mes = calendar.get(Calendar.MONTH);
                 anio = calendar.get(Calendar.YEAR);
@@ -167,9 +181,10 @@ public class TurnoNuevosFragment extends Fragment
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth)
                     {
-                        etFecha.setText(dayOfMonth + "/" + month + "/" + year);
+                        etFecha.setText(year + "-" + month + "-" + dayOfMonth);
                     }
                 }, dia, mes, anio);
+                datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
                 datePickerDialog.show();
             }
         });
@@ -188,7 +203,7 @@ public class TurnoNuevosFragment extends Fragment
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute)
                     {
-                        etHora.setText(hourOfDay + " - " + minute);
+                        etHora.setText(hourOfDay + ":" + minute);
                     }
                 }, hora, min, false);
                 timePickerDialog.show();
@@ -200,7 +215,7 @@ public class TurnoNuevosFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                tn.validarTurno(etHora.getText().toString(), etFecha.getText().toString(), etRazon.getText().toString(), Integer.parseInt(select.getText().toString()));
+                tn.validarTurno(etHora.getText().toString(), etFecha.getText().toString(), etRazon.getText().toString(), idProf);
             }
         });
 
@@ -209,8 +224,18 @@ public class TurnoNuevosFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                Intent intent = new Intent(context, TurnosFragment.class);
-                startActivity(intent);
+                //logoNT.setVisibility(View.GONE);
+                lyDia.setVisibility(View.GONE);
+                lyHora.setVisibility(View.GONE);
+                lyRazon.setVisibility(View.GONE);
+                lyPro.setVisibility(View.GONE);
+                lyBtns.setVisibility(View.GONE);
+                /* INICIA EL Fragment */
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.setReorderingAllowed(true);
+                transaction.replace(R.id.listar_misturnos, TurnosFragment.newInstance());
+                transaction.commit();
             }
         });
     }

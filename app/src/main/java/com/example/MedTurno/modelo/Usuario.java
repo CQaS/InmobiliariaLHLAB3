@@ -13,15 +13,16 @@ public class Usuario
     private java.lang.String pregunta;
     private int rol;
     private java.lang.String fecAlta;
-    private int idprestador;
+    private int idPrestador;
     private Prestador prestador;
     private int idDireccion;
     private Direccion direccion;
+    private int estado;
 
     public Usuario()
     { }
 
-    public Usuario(int id, java.lang.String nombre, int dni, java.lang.String fecNac, java.lang.String mail, int telefono, java.lang.String avatar, java.lang.String password, java.lang.String pregunta, int rol, java.lang.String fecAlta, int idprestador, Prestador prestador, int idDireccion, Direccion direccion)
+    public Usuario(int id, java.lang.String nombre, int dni, java.lang.String fecNac, java.lang.String mail, int telefono, java.lang.String avatar, java.lang.String password, java.lang.String pregunta, int rol, java.lang.String fecAlta, int idPrestador, Prestador prestador, int idDireccion, Direccion direccion, int estado)
     {
         this.id = id;
         this.nombre = nombre;
@@ -34,10 +35,11 @@ public class Usuario
         this.pregunta = pregunta;
         this.rol = rol;
         this.fecAlta = fecAlta;
-        this.idprestador = idprestador;
+        this.idPrestador = idPrestador;
         this.prestador = prestador;
         this.idDireccion = idDireccion;
         this.direccion = direccion;
+        this.estado = estado;
     }
 
     public int getId() {
@@ -128,12 +130,12 @@ public class Usuario
         this.fecAlta = fecAlta;
     }
 
-    public int getIdprestador() {
-        return idprestador;
+    public int getIdPrestador() {
+        return idPrestador;
     }
 
-    public void setIdprestador(int idprestador) {
-        this.idprestador = idprestador;
+    public void setIdPrestador(int idPrestador) {
+        this.idPrestador = idPrestador;
     }
 
     public Prestador getPrestador() {
@@ -158,5 +160,15 @@ public class Usuario
 
     public void setDireccion(Direccion direccion) {
         this.direccion = direccion;
+    }
+
+    public int getEstado()
+    {
+        return estado;
+    }
+
+    public void setEstado(int estado)
+    {
+        this.estado = estado;
     }
 }

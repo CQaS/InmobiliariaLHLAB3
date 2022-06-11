@@ -2,6 +2,7 @@ package com.example.MedTurno.ui.turnos;
 
 import android.app.Application;
 import android.content.Context;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -65,11 +66,11 @@ public class TurnoNuevosViewModel extends AndroidViewModel
 
     public void validarTurno(String hora, String fecha, String razon, int idProfesional)
     {
-        String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
+        String regex = "^[A-Za-z0-9\\s]{5,40}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(razon);
 
-        if (hora != null && fecha != null && razon.length() > 0 && matcher.matches())
+        if (matcher.matches() && idProfesional > 0 )
         {
             Turnos turno = new Turnos();
             turno.setStart(fecha + " " + hora);

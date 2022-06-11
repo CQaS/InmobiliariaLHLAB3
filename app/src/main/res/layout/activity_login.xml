@@ -114,10 +114,12 @@
                     android:layout_marginStart="32dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="32dp"
-                    android:text="Olvidaste tu Clave?"
-                    android:textColor="#ffffff"
-                    android:textSize="16sp"
-                    android:textAlignment="center"/>
+                    android:text="Olvidaste tu Clave?\nAgita el Mobil!"
+                    android:textColor="#F44336"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:background="#B5FFEB3B"/>
 
 
 

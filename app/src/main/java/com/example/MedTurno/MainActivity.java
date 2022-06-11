@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity
 
     private AppBarConfiguration mAppBarConfiguration;
     private MainActivityViewModel mavm;
-    private ImageView imageAvatar;
     private TextView nombre, mail;
 
     @Override
@@ -42,6 +41,7 @@ public class MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setBackgroundColor(getResources().getColor(R.color.teal_700));
 
         View header = navigationView.getHeaderView(0);
 
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity
 
                 //setea el avatar....
                 Glide.with(MainActivity.this)
-                        .load(ApiClient.getPath() + usuario.getAvatar())
+                        .load(ApiClient.getURL() + usuario.getAvatar())
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(imageAvatar);
 

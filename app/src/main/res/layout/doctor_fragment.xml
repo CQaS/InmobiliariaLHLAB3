@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="101dp"
         android:layout_marginTop="5dp"
-        android:background="@color/teal_200"
+        android:background="@color/purple_200"
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:textColorHint="#0C0707">

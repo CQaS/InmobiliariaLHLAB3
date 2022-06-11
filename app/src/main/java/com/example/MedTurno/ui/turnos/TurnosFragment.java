@@ -30,6 +30,10 @@ public class TurnosFragment extends Fragment
     ArrayAdapter<Turnos> adapter;
     Context context;
 
+    public static TurnosFragment newInstance() {
+        return new TurnosFragment();
+    }
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,

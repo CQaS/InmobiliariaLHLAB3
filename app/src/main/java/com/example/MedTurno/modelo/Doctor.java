@@ -74,6 +74,6 @@ public class Doctor implements Serializable
 
     @Override
     public java.lang.String toString() {
-        return "Doc " + nombre;
+        return "Prof. " + nombre;
     }
 }

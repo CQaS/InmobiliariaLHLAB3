@@ -78,9 +78,10 @@ public class LoginActivity extends AppCompatActivity implements SensorEventListe
             @Override
             public void onChanged(Boolean b)
             {
+                user.setText("");
+                pass.setText("");
                 Intent intent = new Intent(getApplicationContext() , MainActivity.class);
                 startActivity(intent);
-                //Toast.makeText(getApplicationContext(), "LOGIN OK", Toast.LENGTH_LONG).show();
             }
         });
 

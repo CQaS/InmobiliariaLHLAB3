@@ -10,15 +10,15 @@
             android:title="Inicio" />
         <item
             android:id="@+id/nav_perfil"
-            android:icon="@drawable/usuario"
+            android:icon="@drawable/ic_face"
             android:title="Perfil" />
         <item
             android:id="@+id/nav_turnos"
-            android:icon="@drawable/usuario"
+            android:icon="@drawable/ic_calendar"
             android:title="Turnos" />
         <item
             android:id="@+id/nav_doctores"
-            android:icon="@drawable/usuario"
+            android:icon="@drawable/ic_profecional"
             android:title="Doctores" />
         <item
             android:id="@+id/nav_logout"

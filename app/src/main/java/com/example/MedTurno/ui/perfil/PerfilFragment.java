@@ -1,6 +1,8 @@
 package com.example.MedTurno.ui.perfil;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -21,13 +22,14 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.MedTurno.R;
 import com.example.MedTurno.modelo.Usuario;
 import com.example.MedTurno.request.ApiClient;
-import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class PerfilFragment extends Fragment
 {
 
     private PerfilViewModel vm;
-    private EditText etNombre, etTelefono, etPassword, etRePassword;
+    private EditText etNombre, etTelefono;
+    private TextInputLayout etPassword, etRePassword;
     private TextView etPaciente;
     //private ImageView imageAvatar;
     private Button btGuardar,btEditar;
@@ -66,7 +68,7 @@ public class PerfilFragment extends Fragment
             {
                 //setea el avatar....
                 Glide.with(context)
-                        .load(ApiClient.getPath() + usuario.getAvatar())
+                        .load(ApiClient.getURL() + usuario.getAvatar())
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(imageAvatar);
 
@@ -90,6 +92,8 @@ public class PerfilFragment extends Fragment
                 etPassword.setEnabled(true);
                 etRePassword.setEnabled(true);
                 etTelefono.setEnabled(true);
+                etPassword.setEnabled(true);
+                etRePassword.setEnabled(true);
                 btEditar.setVisibility(View.GONE);
                 btGuardar.setVisibility(View.VISIBLE);
 
@@ -101,10 +105,7 @@ public class PerfilFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                usuarioActual.setNombre(etNombre.getText().toString());
-                usuarioActual.setTelefono(Integer.parseInt(etTelefono.getText().toString()));
-
-                vm.editarPerfil(usuarioActual, etPassword.getText().toString(), etRePassword.getText().toString());
+                vm.editarPerfil(usuarioActual, etNombre.getText().toString(), etTelefono.getText().toString(), etPassword.getEditText().getText().toString(), etRePassword.getEditText().getText().toString());
 
                 etNombre.setEnabled(false);
                 etTelefono.setEnabled(false);
@@ -118,9 +119,19 @@ public class PerfilFragment extends Fragment
         vm.getError().observe(getViewLifecycleOwner(), new Observer<String>()
         {
             @Override
-            public void onChanged(String er)
+            public void onChanged(String mensaje)
             {
-                Toast.makeText(getContext(), er, Toast.LENGTH_LONG).show();
+                AlertDialog.Builder dialogo = new AlertDialog.Builder(context, R.style.AlertDialogTheme);
+                dialogo.setTitle("MedTurno informa:");
+                dialogo.setMessage(mensaje);
+
+                dialogo.setPositiveButton("OK", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i)
+                    { }
+                });
+                dialogo.show();
             }
         });
     }

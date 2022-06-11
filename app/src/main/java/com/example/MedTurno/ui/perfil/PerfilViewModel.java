@@ -68,7 +68,6 @@ public class PerfilViewModel extends AndroidViewModel
                 }
                 else
                 {
-                    Log.d("nullnull", "ERROR2");
                     error.setValue("Perfil no encontrado");
                 }
             }
@@ -76,25 +75,38 @@ public class PerfilViewModel extends AndroidViewModel
             @Override
             public void onFailure(Call<Usuario> call, Throwable t)
             {
-                Log.d("nullnull", "ERROR");
                 error.setValue("ERROR -> "+ t.getMessage());
             }
         });
 
     }
 
-    public void editarPerfil(Usuario u, String pass1, String pass2)
+    public void editarPerfil(Usuario usuarioA_editar, String nombre, String telefono, String pass1, String pass2)
     {
-        String regex = "^[A-Za-z0-9]";
+        String letras = "^[A-Za-z\\s]{4,20}$";
+        Pattern pattern2 = Pattern.compile(letras);
+        Matcher mNombre = pattern2.matcher(nombre);
+
+        String numeros = "^[0-9]{10,15}$";
+        Pattern pattern3 = Pattern.compile(numeros);
+        Matcher mTelefono = pattern3.matcher(telefono);
+
+        String regex = "^[A-Za-z0-9]{8,40}$";
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(pass1);
-        Matcher matcher1 = pattern.matcher(pass2);
+        Matcher password = pattern.matcher(pass1);
+        Matcher rePassword = pattern.matcher(pass2);
 
-        if (pass1 != null && pass2 != null && pass1.length() > 0 && pass2.length() > 0 && matcher.matches() && matcher1.matches() && pass1 == pass2)
+        if(mNombre.matches() && mTelefono.matches())
         {
-            u.setPassword(pass1);
+            usuarioA_editar.setNombre(nombre);
+            usuarioA_editar.setTelefono(Integer.parseInt(telefono));
+        }
 
-            Call<Usuario> usuario = ApiClient.getMyApiInterface().EditarPerfil(u, ApiClient.obtenerToken(context));
+        if (password.matches() && rePassword.matches() && pass1.equals(pass2))
+        {
+            usuarioA_editar.setPassword(pass1);
+
+            Call<Usuario> usuario = ApiClient.getMyApiInterface().EditarPerfil(usuarioA_editar, ApiClient.obtenerToken(context));
 
             usuario.enqueue(new Callback<Usuario>()
             {

@@ -45,7 +45,7 @@
         app:srcCompat="@drawable/usuario" />
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/scrollTurnos"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -82,10 +82,9 @@
                     android:background="@drawable/edittext_background"
                     android:ems="10"
                     android:enabled="false"
-                    android:hint=""
                     android:inputType="textPersonName"
                     android:paddingLeft="10dp"
-                    android:textColorHint="#f5f5f5"
+                    android:textColor="@color/white"
                     android:textSize="16sp"
                     tools:ignore="SpeakableTextPresentCheck" />
             </LinearLayout>
@@ -113,9 +112,10 @@
                     android:background="@drawable/edittext_background"
                     android:ems="10"
                     android:enabled="false"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:paddingLeft="10dp"
                     android:textColorHint="#f5f5f5"
+                    android:textColor="@color/white"
                     android:textSize="16sp"
                     tools:ignore="SpeakableTextPresentCheck" />
             </LinearLayout>
@@ -134,20 +134,24 @@
                     android:textColor="#3F51B5"
                     android:textSize="26sp" />
 
-                <EditText
-                    android:id="@+id/etPassword"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_height="match_parent"
                     android:background="@drawable/edittext_background"
-                    android:ems="10"
-                    android:hint="********"
-                    android:inputType="textPassword"
-                    android:paddingLeft="10dp"
-                    android:textColorHint="#f5f5f5"
-                    android:textSize="16sp"
-                    android:enabled="false"/>
+                    app:endIconMode="password_toggle"
+                    android:id="@+id/etPassword"
+                    android:enabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        tools:ignore="SpeakableTextPresentCheck"
+                        android:hint="************"
+                        android:gravity="center"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -165,20 +169,25 @@
                     android:textColor="#3F51B5"
                     android:textSize="26sp" />
 
-                <EditText
-                    android:id="@+id/etRePassword"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_height="match_parent"
                     android:background="@drawable/edittext_background"
-                    android:ems="10"
-                    android:hint="********"
-                    android:inputType="textPassword"
-                    android:paddingLeft="10dp"
-                    android:textColorHint="#f5f5f5"
-                    android:textSize="16sp"
-                    android:enabled="false"/>
+                    app:endIconMode="password_toggle"
+                    android:id="@+id/etRePassword"
+                    android:enabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        tools:ignore="SpeakableTextPresentCheck"
+                        android:hint="************"
+                        android:gravity="center"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
             </LinearLayout>
 
             <Button
@@ -188,6 +197,7 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
+                android:layout_marginBottom="7dp"
                 android:background="@drawable/orange_btn_background"
                 android:text="Editar"
                 android:textColor="#ffffff"
@@ -199,6 +209,7 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
+                android:layout_marginBottom="7dp"
                 android:background="@drawable/orange_btn_background"
                 android:text="Aceptar"
                 android:textColor="#ffffff"
