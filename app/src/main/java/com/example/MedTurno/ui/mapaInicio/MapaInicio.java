@@ -65,7 +65,7 @@ public class MapaInicio extends Fragment
                 }
             });
 
-            LatLng Clinica = new LatLng(-32.342999, -65.013562);
+            LatLng Clinica = new LatLng(-33.304311, -66.337024);
 
             map.addMarker
                     (

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="@drawable/gradient_list"
     android:orientation="vertical"
     android:padding="40dp">
 
@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:focusableInTouchMode="false"
         android:focusable="false"
+        android:background="@color/pink"
         android:textColorHint="#050202"
         android:layout_marginTop="5dp">
 
@@ -22,10 +23,11 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:enabled="false"
-            android:hint="Fechas"
+            android:hint="Fecha"
             android:inputType="text"
             android:textColor="#050202"
             android:textSize="20sp"
+            android:textStyle="bold"
             tools:ignore="TouchTargetSizeCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -35,6 +37,7 @@
         android:layout_height="wrap_content"
         android:focusableInTouchMode="false"
         android:focusable="false"
+        android:background="@color/purple_200"
         android:textColorHint="#050202"
         android:layout_marginTop="5dp">
 
@@ -49,6 +52,18 @@
             android:textColor="#050202"
             android:textSize="20sp"
             tools:ignore="TouchTargetSizeCheck" />
+
+        <Button
+            android:id="@+id/btnCancelar"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/red"
+            android:text="Cancelar"
+            android:textColor="#050202"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="100dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 </LinearLayout>

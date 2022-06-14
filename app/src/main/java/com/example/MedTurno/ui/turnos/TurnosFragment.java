@@ -60,13 +60,13 @@ public class TurnosFragment extends Fragment
             @Override
             public void onChanged(ArrayList<Turnos> turnos)
             {
-                adapter= new TurnoAdapter(context, R.layout.turno_fragment, turnos, getLayoutInflater());
+                adapter = new TurnoAdapter(context, R.layout.turno_fragment, turnos, getLayoutInflater());
                 lvTurnos.setAdapter(adapter);
 
             }
         });
 
-        vm.getError().observe(getViewLifecycleOwner(), new Observer<String>()
+        vm.getAviso().observe(getViewLifecycleOwner(), new Observer<String>()
         {
             @Override
             public void onChanged(String er)
@@ -76,6 +76,7 @@ public class TurnosFragment extends Fragment
         });
 
         vm.cargarTurnos();
+
     }
 
 }

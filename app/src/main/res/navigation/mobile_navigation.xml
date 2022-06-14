@@ -18,26 +18,27 @@
     <fragment
         android:id="@+id/nav_turnos"
         android:name="com.example.MedTurno.ui.turnos.TurnoNuevosFragment"
-        android:label="TurnosFragment" >
+        android:label="Solicitar un Turno"
+        tools:layout="@layout/turno_nuevos_fragment">
         <action
-            android:id="@+id/action_nav_turnos_to_turnoNuevosFragment"
-            app:destination="@id/turnoNuevosFragment" />
+            android:id="@+id/action_nav_turnos_to_turnosFragment"
+            app:destination="@id/turnosFragment" />
     </fragment>
     <fragment
         android:id="@+id/nav_doctores"
         android:name="com.example.MedTurno.ui.doctores.DoctoresFragment"
-        android:label="DoctoresFragment" />
+        android:label="Nuestros Profecionales" />
     <fragment
         android:id="@+id/mapaInicioFragment"
         android:name="com.example.MedTurno.ui.mapaInicio.MapaInicio"
         android:label="Nuestra Ubicacion"
         tools:layout="@layout/fragment_mapa_inicio" />
     <fragment
-        android:id="@+id/turnoNuevosFragment"
-        android:name="com.example.MedTurno.ui.turnos.TurnoNuevosFragment"
-        android:label="TurnoNuevosFragment" >
+        android:id="@+id/turnosFragment"
+        android:name="com.example.MedTurno.ui.turnos.TurnosFragment"
+        android:label="TurnosFragment" >
         <action
-            android:id="@+id/action_turnoNuevosFragment_to_nav_turnos"
+            android:id="@+id/action_turnosFragment_to_nav_turnos"
             app:destination="@id/nav_turnos" />
     </fragment>
 

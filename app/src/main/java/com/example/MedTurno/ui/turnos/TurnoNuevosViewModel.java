@@ -2,13 +2,12 @@ package com.example.MedTurno.ui.turnos;
 
 import android.app.Application;
 import android.content.Context;
-import android.widget.Toast;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.example.MedTurno.modelo.Doctor;
 import com.example.MedTurno.modelo.Turnos;
@@ -26,7 +25,7 @@ public class TurnoNuevosViewModel extends AndroidViewModel
 {
     private Context context;
     private MutableLiveData<String> turnoMutable;
-    private MutableLiveData<String> error;
+    private MutableLiveData<String> aviso;
     private MutableLiveData<ArrayList<Doctor>> doctoresMutable;
 
     public TurnoNuevosViewModel(@NonNull Application application)
@@ -45,13 +44,13 @@ public class TurnoNuevosViewModel extends AndroidViewModel
         return doctoresMutable;
     }
 
-    public LiveData<String> getError()
+    public LiveData<String> getAviso()
     {
-        if(error == null)
+        if(aviso == null)
         {
-            error = new MutableLiveData<>();
+            aviso = new MutableLiveData<>();
         }
-        return error;
+        return aviso;
     }
 
     public MutableLiveData<String> getTurnoMutable()
@@ -90,20 +89,20 @@ public class TurnoNuevosViewModel extends AndroidViewModel
                     }
                     else
                     {
-                        error.setValue("Algo Fallo!");
+                        aviso.setValue("Algo Fallo!");
                     }
                 }
 
                 @Override
                 public void onFailure(Call<Turnos> call, Throwable t)
                 {
-                    error.setValue("Algo fallo!!");
+                    aviso.setValue("Algo fallo!!");
                 }
             });
         }
         else
         {
-            error.setValue("Datos incorrectos!!");
+            aviso.setValue("Datos incorrectos!!");
         }
     }
 
@@ -122,16 +121,47 @@ public class TurnoNuevosViewModel extends AndroidViewModel
                 }
                 else
                 {
-                    error.postValue("No hubo respuesta");
+                    aviso.postValue("No hubo respuesta");
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<Doctor>> call, Throwable t)
             {
-                error.setValue(t.toString());
+                aviso.setValue(t.toString());
 
             }
         });
+    }
+
+    public void cancelar(int id)
+    {
+        Log.d("cancelar2", Integer.toString(id));
+
+        /*Call<String> cancelar = ApiClient.getMyApiInterface().CancelarTurno(id, ApiClient.obtenerToken(context));
+
+        cancelar.enqueue(new Callback<String>()
+        {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response)
+            {
+                if (response.isSuccessful())
+                {
+                    aviso.setValue("Su turno fue cancelado");
+                }
+                else
+                {
+                    aviso.setValue("No hubo respuesta");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t)
+            {
+                aviso.setValue("No hubo respuesta");
+            }
+        });*/
+
+
     }
 }

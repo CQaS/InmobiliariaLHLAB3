@@ -63,6 +63,9 @@ public class ApiClient
 
         @POST("Turnos")
         Call<Turnos> NuevoTurno(@Body Turnos turno, @Header("Authorization") String token);
+
+        @PUT("Turnos")
+        Call<String> CancelarTurno(@Path("id") int id, @Header("Authorization") String token);
     }
 
     public  static String obtenerToken(Context context)

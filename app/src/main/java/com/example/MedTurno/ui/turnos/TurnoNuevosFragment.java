@@ -10,12 +10,11 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -143,7 +142,7 @@ public class TurnoNuevosFragment extends Fragment
             }
         });
 
-        tn.getError().observe(getViewLifecycleOwner(), new Observer<String>()
+        tn.getAviso().observe(getViewLifecycleOwner(), new Observer<String>()
         {
             @Override
             public void onChanged(String mensaje)
@@ -224,19 +223,29 @@ public class TurnoNuevosFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                //logoNT.setVisibility(View.GONE);
-                lyDia.setVisibility(View.GONE);
+                //logoNT.setVisibility(View.GONE);  OCULTA EL FORM y MUSTRA LA LSITA
+                /*lyDia.setVisibility(View.GONE);
                 lyHora.setVisibility(View.GONE);
                 lyRazon.setVisibility(View.GONE);
                 lyPro.setVisibility(View.GONE);
                 lyBtns.setVisibility(View.GONE);
-                /* INICIA EL Fragment */
+                 INICIA EL Fragment
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.setReorderingAllowed(true);
                 transaction.replace(R.id.listar_misturnos, TurnosFragment.newInstance());
-                transaction.commit();
+                transaction.commit();*/
+                Navigation.findNavController(getActivity(), R.id.nav_host_fragment)
+                        .navigate(R.id.turnosFragment);
             }
         });
+
+        Bundle argument = getArguments();
+        if(argument != null)
+        {
+            int id = getArguments().getInt("idCancelar");
+            Log.d("cancelar1", Integer.toString(id));
+            tn.cancelar(id);
+        }
     }
 }

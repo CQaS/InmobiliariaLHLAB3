@@ -8,9 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
-import com.example.MedTurno.modelo.Doctor;
 import com.example.MedTurno.modelo.Turnos;
 import com.example.MedTurno.request.ApiClient;
 
@@ -23,7 +21,7 @@ import retrofit2.Response;
 public class TurnosViewModel extends AndroidViewModel
 {
     private Context context;
-    private MutableLiveData<String> error;
+    private MutableLiveData<String> aviso;
     private ArrayAdapter<Turnos> adapter;
     private MutableLiveData<ArrayList<Turnos>> turnosMutable;
 
@@ -42,13 +40,13 @@ public class TurnosViewModel extends AndroidViewModel
         return turnosMutable;
     }
 
-    public LiveData<String> getError()
+    public LiveData<String> getAviso()
     {
-        if(error == null)
+        if(aviso == null)
         {
-            error = new MutableLiveData<>();
+            aviso = new MutableLiveData<>();
         }
-        return error;
+        return aviso;
     }
 
 
@@ -67,16 +65,17 @@ public class TurnosViewModel extends AndroidViewModel
                 }
                 else
                 {
-                    error.postValue("No hubo respuesta");
+                    aviso.postValue("No hubo respuesta");
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<Turnos>> call, Throwable t)
             {
-                error.setValue(t.toString());
+                aviso.setValue(t.toString());
 
             }
         });
     }
+
 }
