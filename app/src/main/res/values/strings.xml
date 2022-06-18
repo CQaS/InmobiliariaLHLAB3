@@ -14,7 +14,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="salir">Salir de la Aplicacion</string>
     <string name="avisoSalir">\nEstas a punto de cerrar tu sesion en: \n\nMedTurno</string>
-    <string name="aquiEstamos">ubicacion</string>
+    <string name="aquiEstamos">Tu Clinica Amiga!</string>
     <string name="googleApiKey">AIzaSyDNliUta12A_tc-AQ_d81v2opp9lsE9NYA</string>
     <string name="medturno_info">MedTurno Informa!</string>
     <string name="seguro">Estas seguro de cancelar?</string>

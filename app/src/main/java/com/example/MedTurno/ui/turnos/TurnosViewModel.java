@@ -2,6 +2,7 @@ package com.example.MedTurno.ui.turnos;
 
 import android.app.Application;
 import android.content.Context;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
@@ -78,4 +79,30 @@ public class TurnosViewModel extends AndroidViewModel
         });
     }
 
+    public void cancelar(Turnos turnoCancelar)
+    {
+        /**/Call<String> cancelar = ApiClient.getMyApiInterface().CancelarTurno(turnoCancelar, ApiClient.obtenerToken(context));
+
+        cancelar.enqueue(new Callback<String>()
+        {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response)
+            {
+                if (response.isSuccessful())
+                {
+                    aviso.setValue("Su turno fue cancelado");
+                }
+                else
+                {
+                    aviso.setValue("No hubo respuesta");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t)
+            {
+                aviso.setValue("No hubo respuesta");
+            }
+        });
+    }
 }

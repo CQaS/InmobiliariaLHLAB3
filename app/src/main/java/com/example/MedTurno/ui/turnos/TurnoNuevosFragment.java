@@ -223,29 +223,10 @@ public class TurnoNuevosFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                //logoNT.setVisibility(View.GONE);  OCULTA EL FORM y MUSTRA LA LSITA
-                /*lyDia.setVisibility(View.GONE);
-                lyHora.setVisibility(View.GONE);
-                lyRazon.setVisibility(View.GONE);
-                lyPro.setVisibility(View.GONE);
-                lyBtns.setVisibility(View.GONE);
-                 INICIA EL Fragment
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.setReorderingAllowed(true);
-                transaction.replace(R.id.listar_misturnos, TurnosFragment.newInstance());
-                transaction.commit();*/
+
                 Navigation.findNavController(getActivity(), R.id.nav_host_fragment)
                         .navigate(R.id.turnosFragment);
             }
         });
-
-        Bundle argument = getArguments();
-        if(argument != null)
-        {
-            int id = getArguments().getInt("idCancelar");
-            Log.d("cancelar1", Integer.toString(id));
-            tn.cancelar(id);
-        }
     }
 }

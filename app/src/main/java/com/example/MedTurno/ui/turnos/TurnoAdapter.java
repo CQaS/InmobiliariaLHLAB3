@@ -80,23 +80,21 @@ public class TurnoAdapter extends ArrayAdapter<Turnos>
             @Override
             public void onClick(View v)
             {
-
+                Log.d("cancelar", Integer.toString(turnos.getId()));
                 new AlertDialog.Builder(getContext())
                         .setTitle(R.string.medturno_info)
-                        .setIcon(R.drawable.logout)
+                        .setIcon(R.drawable.info)
                         .setMessage(R.string.seguro)
                         .setPositiveButton("Aceptar", new DialogInterface.OnClickListener()
                         {
                             @Override
                             public void onClick(DialogInterface dialog, int which)
                             {
-                                Log.d("cancelar", Integer.toString(turnos.getId()));
-
-                                Bundle idTurnoCalcelar = new Bundle();
-                                idTurnoCalcelar.putSerializable("idCancelar", turnos.getId());
+                                Bundle TurnoCalcelar = new Bundle();
+                                TurnoCalcelar.putSerializable("turnoCancelar", turnos);
 
                                 Navigation.findNavController((Activity) context, R.id.nav_host_fragment)
-                                        .navigate(R.id.nav_turnos, idTurnoCalcelar);/**/
+                                        .navigate(R.id.turnosFragment, TurnoCalcelar);
                             }
                         })
                         .setNegativeButton("Cancelar", new DialogInterface.OnClickListener()

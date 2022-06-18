@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,6 +75,13 @@ public class TurnosFragment extends Fragment
                 Toast.makeText(context,"errorT " + er, Toast.LENGTH_LONG).show();
             }
         });
+
+        Bundle argument = getArguments();
+        if(argument != null)
+        {
+            Toast.makeText(context,"argumento != null" + argument, Toast.LENGTH_LONG).show();
+            //vm.cancelar(turnosCancelar);
+        }
 
         vm.cargarTurnos();
 

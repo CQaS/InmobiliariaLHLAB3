@@ -8,16 +8,18 @@ public class Direccion implements Serializable
     private String calle;
     private int numero;
     private String ciudad;
+    private int estado;
 
     public Direccion()
     { }
 
-    public Direccion(int id, String calle, int numero, String ciudad)
+    public Direccion(int id, String calle, int numero, String ciudad, int estado)
     {
         this.id = id;
         this.calle = calle;
         this.numero = numero;
         this.ciudad = ciudad;
+        this.estado = estado;
     }
 
     public int getId() {
@@ -50,5 +52,13 @@ public class Direccion implements Serializable
 
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
+    }
+
+    public int getEstado() {
+    return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
 }
