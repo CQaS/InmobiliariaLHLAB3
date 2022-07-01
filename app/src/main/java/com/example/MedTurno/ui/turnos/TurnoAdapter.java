@@ -90,11 +90,11 @@ public class TurnoAdapter extends ArrayAdapter<Turnos>
                             @Override
                             public void onClick(DialogInterface dialog, int which)
                             {
-                                Bundle TurnoCalcelar = new Bundle();
-                                TurnoCalcelar.putSerializable("turnoCancelar", turnos);
+                                Bundle TurnoACalcelar = new Bundle();
+                                TurnoACalcelar.putSerializable("turnoACancelar", turnos);
 
                                 Navigation.findNavController((Activity) context, R.id.nav_host_fragment)
-                                        .navigate(R.id.turnosFragment, TurnoCalcelar);
+                                        .navigate(R.id.turnosFragment, TurnoACalcelar);
                             }
                         })
                         .setNegativeButton("Cancelar", new DialogInterface.OnClickListener()

@@ -72,15 +72,16 @@ public class TurnosFragment extends Fragment
             @Override
             public void onChanged(String er)
             {
-                Toast.makeText(context,"errorT " + er, Toast.LENGTH_LONG).show();
+                Toast.makeText(context,"MedTurno Informa: " + er, Toast.LENGTH_LONG).show();
+                vm.cargarTurnos();
             }
         });
 
         Bundle argument = getArguments();
         if(argument != null)
         {
-            Toast.makeText(context,"argumento != null" + argument, Toast.LENGTH_LONG).show();
-            //vm.cancelar(turnosCancelar);
+            Turnos turnoACancelar = (Turnos)argument.getSerializable("turnoACancelar");
+            vm.cancelar(turnoACancelar);
         }
 
         vm.cargarTurnos();

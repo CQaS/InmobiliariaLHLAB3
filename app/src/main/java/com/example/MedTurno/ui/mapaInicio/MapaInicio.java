@@ -16,15 +16,13 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.MedTurno.R;
-import com.example.MedTurno.modelo.Usuario;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -34,15 +32,13 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.ArrayList;
+import java.text.DecimalFormat;
 
 public class MapaInicio extends Fragment
 {
     private GoogleMap map;
-    private Marker marcador;
     double lat = 0.0;
     double lng = 0.0;
     String msg;
@@ -213,7 +209,7 @@ public class MapaInicio extends Fragment
         LatLng coordenadas = new LatLng(lat, lng);
         CameraUpdate MiUbicacion = CameraUpdateFactory.newLatLngZoom(coordenadas,16);
 
-        //if(marcador != null)marcador.remove();
+
         //añade circunferencia...
         CircleOptions circleOptionsP = new CircleOptions()
                 .center(coordenadas)
@@ -223,9 +219,21 @@ public class MapaInicio extends Fragment
                 .fillColor(Color.argb(32, 0, 255, 0));
         map.addCircle(circleOptionsP);
 
-        marcador = map.addMarker(new MarkerOptions()
+        //calcula distancia...
+        Location locationP = new Location("paciente");
+        Location locationC = new Location("clinica");
+        locationP.setLatitude(lat);
+        locationP.setLongitude(lng);
+        locationC.setLatitude(-33.304311);
+        locationC.setLongitude(-66.337024);
+        float distanciaKm = locationP.distanceTo(locationC) / 1000;
+
+        DecimalFormat df = new DecimalFormat("0.00");
+
+        map.addMarker(new MarkerOptions()
                 .position(coordenadas)
-                .title("Aqui te encuentras!!"));
+                .title("Aqui te encuentras, a..")
+                .snippet(df.format(distanciaKm) + "Kms de distancia de la Clinica!"));
         map.animateCamera(MiUbicacion);
     }
 
