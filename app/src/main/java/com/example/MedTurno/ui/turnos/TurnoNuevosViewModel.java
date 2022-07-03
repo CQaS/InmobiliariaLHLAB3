@@ -24,7 +24,7 @@ import retrofit2.Response;
 public class TurnoNuevosViewModel extends AndroidViewModel
 {
     private Context context;
-    private MutableLiveData<String> turnoMutable;
+    private MutableLiveData<Boolean> turnoMutable;
     private MutableLiveData<String> aviso;
     private MutableLiveData<ArrayList<Doctor>> doctoresMutable;
 
@@ -53,7 +53,7 @@ public class TurnoNuevosViewModel extends AndroidViewModel
         return aviso;
     }
 
-    public MutableLiveData<String> getTurnoMutable()
+    public LiveData<Boolean> getTurnoMutable()
     {
 
         if(turnoMutable == null)
@@ -61,6 +61,11 @@ public class TurnoNuevosViewModel extends AndroidViewModel
             turnoMutable = new MutableLiveData<>();
         }
         return turnoMutable;
+    }
+
+    public void setNull()
+    {
+        turnoMutable.postValue(null);
     }
 
     public void validarTurno(String hora, String fecha, String razon, int idProfesional)
@@ -85,7 +90,7 @@ public class TurnoNuevosViewModel extends AndroidViewModel
                 {
                     if (response.isSuccessful())
                     {
-                        turnoMutable.setValue("Turno solicitado con Exito!");
+                        turnoMutable.setValue(true);
                     }
                     else
                     {
@@ -132,36 +137,5 @@ public class TurnoNuevosViewModel extends AndroidViewModel
 
             }
         });
-    }
-
-    public void cancelar(int id)
-    {
-        Log.d("cancelar2", Integer.toString(id));
-
-        /*Call<String> cancelar = ApiClient.getMyApiInterface().CancelarTurno(id, ApiClient.obtenerToken(context));
-
-        cancelar.enqueue(new Callback<String>()
-        {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response)
-            {
-                if (response.isSuccessful())
-                {
-                    aviso.setValue("Su turno fue cancelado");
-                }
-                else
-                {
-                    aviso.setValue("No hubo respuesta");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<String> call, Throwable t)
-            {
-                aviso.setValue("No hubo respuesta");
-            }
-        });*/
-
-
     }
 }

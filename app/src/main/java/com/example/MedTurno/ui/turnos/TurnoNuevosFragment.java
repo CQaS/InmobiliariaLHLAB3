@@ -89,20 +89,25 @@ public class TurnoNuevosFragment extends Fragment
         tn = new ViewModelProvider(this).get(TurnoNuevosViewModel.class);
 
         //Turno OK.........
-        tn.getTurnoMutable().observe(getViewLifecycleOwner(), new Observer<String>()
+        tn.getTurnoMutable().observe(getViewLifecycleOwner(), new Observer<Boolean>()
         {
             @Override
-            public void onChanged(String mensaje)
+            public void onChanged(Boolean value)
             {
+                btSolicitar.setVisibility(View.INVISIBLE);
+
                 AlertDialog.Builder dialogo = new AlertDialog.Builder(context, R.style.AlertDialogTheme);
                 dialogo.setTitle("MedTurno informa:");
-                dialogo.setMessage(mensaje);
+                dialogo.setMessage("Turno solicitado con Exito!");
 
                 dialogo.setPositiveButton("OK", new DialogInterface.OnClickListener()
                 {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i)
-                    { }
+                    {
+                        Navigation.findNavController(getActivity(), R.id.nav_host_fragment)
+                                .navigate(R.id.nav_perfil);
+                    }
                 });
                 dialogo.show();
             }
@@ -123,7 +128,7 @@ public class TurnoNuevosFragment extends Fragment
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
                     {
-                        if(position > 0)
+                        if(position >= 0)
                         {
 
                             idProf = ((Doctor)parent.getSelectedItem()).getId();
@@ -180,7 +185,7 @@ public class TurnoNuevosFragment extends Fragment
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth)
                     {
-                        etFecha.setText(year + "-" + month + "-" + dayOfMonth);
+                        etFecha.setText(year + "-" + (month+1) + "-" + dayOfMonth);
                     }
                 }, dia, mes, anio);
                 datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
