@@ -9,12 +9,13 @@ public class Doctor implements Serializable
     private java.lang.String matricula;
     private java.lang.String horarioatencion;
     private int idEspecialidad;
-    private java.lang.String especialidad;
+    private Especialidad especialidad;
+    private java.lang.String tipo;
 
     public Doctor()
     { }
 
-    public Doctor(int id, java.lang.String nombre, java.lang.String matricula, java.lang.String horarioatencion, int idEspecialidad, java.lang.String especialidad)
+    public Doctor(int id, java.lang.String nombre, java.lang.String matricula, java.lang.String horarioatencion, int idEspecialidad, Especialidad especialidad, java.lang.String tipo)
     {
         this.id = id;
         this.nombre = nombre;
@@ -22,6 +23,7 @@ public class Doctor implements Serializable
         this.horarioatencion = horarioatencion;
         this.idEspecialidad = idEspecialidad;
         this.especialidad = especialidad;
+        this.tipo = tipo;
     }
 
     public int getId() {
@@ -64,12 +66,22 @@ public class Doctor implements Serializable
         this.idEspecialidad = idEspecialidad;
     }
 
-    public java.lang.String getEspecialidad() {
+    public Especialidad getEspecialidad() {
         return especialidad;
     }
 
-    public void setEspecialidad(java.lang.String especialidad) {
+    public void setEspecialidad(Especialidad especialidad) {
         this.especialidad = especialidad;
+    }
+
+    public java.lang.String getTipo()
+    {
+        return tipo;
+    }
+
+    public void setTipo(java.lang.String tipo)
+    {
+        this.tipo = tipo;
     }
 
     @Override

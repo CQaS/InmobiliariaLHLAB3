@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,8 +29,7 @@ public class PerfilFragment extends Fragment
 {
 
     private PerfilViewModel vm;
-    private EditText etNombre, etTelefono;
-    private TextInputLayout etPassword, etRePassword;
+    private EditText etPassword, etRePassword, etNombre, etTelefono;
     private TextView etPaciente;
     //private ImageView imageAvatar;
     private Button btGuardar,btEditar;
@@ -57,7 +57,7 @@ public class PerfilFragment extends Fragment
         etPassword=view.findViewById(R.id.etPassword);
         etRePassword=view.findViewById(R.id.etRePassword);
         btEditar=view.findViewById(R.id.btEditar);
-        btGuardar =view.findViewById(R.id.btAceptar);
+        btGuardar =view.findViewById(R.id.btnGuardar);
 
         vm = new ViewModelProvider(this).get(PerfilViewModel.class);
 
@@ -105,7 +105,8 @@ public class PerfilFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                vm.editarPerfil(usuarioActual, etNombre.getText().toString(), etTelefono.getText().toString(), etPassword.getEditText().getText().toString(), etRePassword.getEditText().getText().toString());
+                Log.d("guardar", "onclick");
+                vm.editarPerfil(usuarioActual, etNombre.getText().toString(), etTelefono.getText().toString(), etPassword.getText().toString(), etRePassword.getText().toString());
 
                 etNombre.setEnabled(false);
                 etTelefono.setEnabled(false);

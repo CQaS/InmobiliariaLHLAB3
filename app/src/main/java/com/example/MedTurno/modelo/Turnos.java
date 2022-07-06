@@ -18,11 +18,12 @@ public class Turnos implements Serializable
     private Doctor doctor;
     private int idUsuario;
     private Usuario usuario;
+    private int estado;
 
     public Turnos()
     { }
 
-    public Turnos(int id, java.lang.String fechaSolicitud, java.lang.String start, java.lang.String end, java.lang.String color, java.lang.String descripcion, java.lang.String textColor, java.lang.String title, int idPrestador, Prestador prestador, int idDoctor, Doctor doctor, int idUsuario, Usuario usuario)
+    public Turnos(int id, java.lang.String fechaSolicitud, java.lang.String start, java.lang.String end, java.lang.String color, java.lang.String descripcion, java.lang.String textColor, java.lang.String title, int idPrestador, Prestador prestador, int idDoctor, Doctor doctor, int idUsuario, Usuario usuario, int estado)
     {
         this.id = id;
         this.fechaSolicitud = fechaSolicitud;
@@ -38,6 +39,7 @@ public class Turnos implements Serializable
         this.doctor = doctor;
         this.idUsuario = idUsuario;
         this.usuario = usuario;
+        this.estado = estado;
     }
 
     public int getId() {
@@ -150,5 +152,15 @@ public class Turnos implements Serializable
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public int getEstado()
+    {
+        return estado;
+    }
+
+    public void setEstado(int estado)
+    {
+        this.estado = estado;
     }
 }

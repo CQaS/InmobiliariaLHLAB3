@@ -134,23 +134,23 @@
                     android:textColor="#3F51B5"
                     android:textSize="26sp" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/edittext_background"
-                    app:endIconMode="password_toggle"
+                <EditText
                     android:id="@+id/etPassword"
-                    android:enabled="false">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPassword"
-                        tools:ignore="SpeakableTextPresentCheck"
-                        android:hint="************"
-                        android:gravity="center"
-                        />
-                </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/edittext_background"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:inputType="textPassword"
+                    android:paddingLeft="10dp"
+                    android:textColorHint="#f5f5f5"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:hint="********"
+                    app:endIconMode="password_toggle"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
             </LinearLayout>
 
@@ -169,23 +169,23 @@
                     android:textColor="#3F51B5"
                     android:textSize="26sp" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/edittext_background"
-                    app:endIconMode="password_toggle"
+                <EditText
                     android:id="@+id/etRePassword"
-                    android:enabled="false">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPassword"
-                        tools:ignore="SpeakableTextPresentCheck"
-                        android:hint="************"
-                        android:gravity="center"
-                        />
-                </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/edittext_background"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:inputType="textPassword"
+                    android:paddingLeft="10dp"
+                    android:textColorHint="#f5f5f5"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:hint="*********"
+                    app:endIconMode="password_toggle"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
 
             </LinearLayout>
@@ -203,7 +203,7 @@
                 android:textColor="#ffffff"
                 android:textSize="18sp" />
             <Button
-                android:id="@+id/btAceptar"
+                android:id="@+id/btnGuardar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -211,7 +211,7 @@
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="7dp"
                 android:background="@drawable/orange_btn_background"
-                android:text="Aceptar"
+                android:text="Guardar"
                 android:textColor="#ffffff"
                 android:textSize="18sp"
                 android:visibility="gone"/>

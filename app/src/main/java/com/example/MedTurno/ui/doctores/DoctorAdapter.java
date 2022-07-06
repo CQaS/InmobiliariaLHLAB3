@@ -14,7 +14,6 @@ import androidx.annotation.RequiresApi;
 
 import com.example.MedTurno.R;
 import com.example.MedTurno.modelo.Doctor;
-import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.List;
 
@@ -53,7 +52,7 @@ public class DoctorAdapter extends ArrayAdapter<Doctor>
         nombreDoc.setText(doctores.getNombre());
 
         TextView especialidad = item.findViewById(R.id.etEspecialidad);
-        especialidad.setText(doctores.getEspecialidad() + "\n" + doctores.getHorarioatencion());
+        especialidad.setText(doctores.getTipo() + "\n" + doctores.getHorarioatencion());
 
         return  item;
     }

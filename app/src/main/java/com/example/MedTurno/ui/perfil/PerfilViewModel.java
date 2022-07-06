@@ -27,6 +27,7 @@ public class PerfilViewModel extends AndroidViewModel
     private MutableLiveData<Usuario> usuarioMutable;
     private MutableLiveData<String> error;
     private Context context;
+    private int err = 0;
 
     public PerfilViewModel(@NonNull Application application)
     {
@@ -83,29 +84,50 @@ public class PerfilViewModel extends AndroidViewModel
 
     public void editarPerfil(Usuario usuarioA_editar, String nombre, String telefono, String pass1, String pass2)
     {
+        Log.d("guardar", "editar");
+
         String letras = "^[A-Za-z\\s]{4,20}$";
         Pattern pattern2 = Pattern.compile(letras);
         Matcher mNombre = pattern2.matcher(nombre);
 
-        String numeros = "^[0-9]{10,15}$";
+        String numeros = "^[0-9]{7,15}$";
         Pattern pattern3 = Pattern.compile(numeros);
         Matcher mTelefono = pattern3.matcher(telefono);
-
-        String regex = "^[A-Za-z0-9]{8,40}$";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher password = pattern.matcher(pass1);
-        Matcher rePassword = pattern.matcher(pass2);
 
         if(mNombre.matches() && mTelefono.matches())
         {
             usuarioA_editar.setNombre(nombre);
             usuarioA_editar.setTelefono(Integer.parseInt(telefono));
         }
-
-        if (password.matches() && rePassword.matches() && pass1.equals(pass2))
+        else
         {
-            usuarioA_editar.setPassword(pass1);
+            error.setValue("Datos incorrectos1!!");
+            err++;
+        }
 
+        if((pass1 == null || pass1.isEmpty() || pass1.trim().isEmpty()) || (pass2 == null || pass2.isEmpty() || pass2.trim().isEmpty()))
+        {
+        }
+        else
+        {
+            String regex = "^[A-Za-z0-9]{8,40}$";
+            Pattern pattern = Pattern.compile(regex);
+            Matcher password = pattern.matcher(pass1);
+            Matcher rePassword = pattern.matcher(pass2);
+
+            if (password.matches() && rePassword.matches() && pass1.equals(pass2))
+            {
+                usuarioA_editar.setPassword(pass1);
+            }
+            else
+            {
+                error.setValue("Datos incorrectos2!!");
+                err++;
+            }
+        }
+
+        if(err == 0)
+        {
             Call<Usuario> usuario = ApiClient.getMyApiInterface().EditarPerfil(usuarioA_editar, ApiClient.obtenerToken(context));
 
             usuario.enqueue(new Callback<Usuario>()
@@ -137,11 +159,6 @@ public class PerfilViewModel extends AndroidViewModel
                     error.setValue("ERROR -> "+ t.getMessage());
                 }
             });
-
-        }
-        else
-        {
-            error.setValue("Datos incorrectos!!");
         }
     }
 }

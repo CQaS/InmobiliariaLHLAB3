@@ -12,26 +12,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.MedTurno.R;
 import com.example.MedTurno.modelo.Turnos;
-import com.example.MedTurno.modelo.Usuario;
-import com.example.MedTurno.request.ApiClient;
 import com.google.android.material.textfield.TextInputEditText;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class TurnoAdapter extends ArrayAdapter<Turnos>
 {
@@ -40,7 +32,7 @@ public class TurnoAdapter extends ArrayAdapter<Turnos>
     private  Context context;
     private List<Turnos> turnos;
     private LayoutInflater li;
-    private TextInputEditText fechas, especialidad;
+    private TextView fechas, especialidad;
     private Button btnCancelar;
     private String idT;
 
@@ -71,16 +63,43 @@ public class TurnoAdapter extends ArrayAdapter<Turnos>
         fechas.setText(turnos.getStart().toString());
 
         especialidad = item.findViewById(R.id.etEspecialista);
-        especialidad.setText(turnos.getDoctor().getNombre());
+        especialidad.setText(turnos.getDoctor().getNombre() + " - " + turnos.getDoctor().getEspecialidad().getTipo());
 
         btnCancelar = item.findViewById(R.id.btnCancelar);
+
+        switch (turnos.getEstado())
+        {
+            case 1:
+                btnCancelar.setText("particular* cancelar");
+                break;
+            case 2:
+                btnCancelar.setText("pendiente* cancelar");
+                break;
+            case 3:
+                btnCancelar.setText("rechazado* cancelar");
+                break;
+            case 4:
+                btnCancelar.setText("atendido* cancelar");
+                break;
+            case 5:
+                btnCancelar.setText("urgente* cancelar");
+                break;
+            case 6:
+                btnCancelar.setText("prioritario* cancelar");
+                break;
+            case 7:
+                btnCancelar.setText("OSocial* cancelar");
+                break;
+            case 8:
+                btnCancelar.setText("normal* cancelar");
+                break;
+        }
 
         btnCancelar.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                Log.d("cancelar", Integer.toString(turnos.getId()));
                 new AlertDialog.Builder(getContext())
                         .setTitle(R.string.medturno_info)
                         .setIcon(R.drawable.info)
