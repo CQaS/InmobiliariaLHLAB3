@@ -18,7 +18,7 @@
             android:title="Turnos" />
         <item
             android:id="@+id/nav_doctores"
-            android:icon="@drawable/ic_profecional"
+            android:icon="@drawable/ic_profesional"
             android:title="Doctores" />
         <item
             android:id="@+id/nav_logout"

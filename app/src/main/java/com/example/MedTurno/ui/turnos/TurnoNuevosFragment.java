@@ -77,7 +77,7 @@ public class TurnoNuevosFragment extends Fragment
         lyDia = root.findViewById(R.id.lyDia);
         lyHora = root.findViewById(R.id.lyHora);
         lyRazon = root.findViewById(R.id.lyRazon);
-        lyPro = root.findViewById(R.id.lyProfecional);
+        lyPro = root.findViewById(R.id.lyProfesional);
         lyBtns = root.findViewById(R.id.lyBotones);
         etFecha = root.findViewById(R.id.etFecha);
         etHora = root.findViewById(R.id.etHora);
